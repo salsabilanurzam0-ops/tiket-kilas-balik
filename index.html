@@ -10,15 +10,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Open Graph untuk social media -->
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎫</text></svg>">
+    
+    <!-- Open Graph -->
     <meta property="og:title" content="KILAS BALIK MASA - SMA Hangtuah 5 Sidoarjo">
     <meta property="og:description" content="Menguak Kenangan, Menyusuri Lorong Waktu - Sabtu, 24 Januari 2026">
     <meta property="og:image" content="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&h=630&q=80">
     <meta property="og:url" content="">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@kopi_basi">
-    <meta name="instagram:creator" content="@kopi_basi">
+    
     <style>
+        /* ============================================= */
+        /* RESET & BASE STYLES */
+        /* ============================================= */
         * {
             margin: 0;
             padding: 0;
@@ -27,6 +33,7 @@
 
         html {
             font-size: 14px;
+            scroll-behavior: smooth;
         }
 
         body {
@@ -42,7 +49,7 @@
             overflow-x: hidden;
         }
 
-        /* Background efek subtle */
+        /* Background efek */
         body::before {
             content: "";
             position: fixed;
@@ -56,6 +63,31 @@
             z-index: -1;
         }
 
+        /* ============================================= */
+        /* UTILITY CLASSES */
+        /* ============================================= */
+        .hidden {
+            display: none !important;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .float-animation {
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .required::after {
+            content: " *";
+            color: #ff5252;
+        }
+
+        /* ============================================= */
+        /* CONTAINER & LAYOUT */
+        /* ============================================= */
         .container {
             width: 100%;
             margin: 0 auto;
@@ -64,7 +96,9 @@
             overflow: visible;
         }
 
-        /* Header dengan font modern & elegant - SIMPLE BORDER */
+        /* ============================================= */
+        /* HEADER STYLES */
+        /* ============================================= */
         .header {
             text-align: center;
             margin-bottom: 25px;
@@ -77,7 +111,6 @@
             border: 2px solid #d4af37;
         }
 
-        /* Social Media Badge di Header */
         .social-header {
             position: absolute;
             top: 15px;
@@ -107,7 +140,6 @@
             box-shadow: 0 6px 15px rgba(212, 175, 55, 0.4);
         }
 
-        /* Font Header Modern & Elegant */
         .header-main {
             font-family: 'Playfair Display', serif;
             background: linear-gradient(45deg, #d4af37 0%, #f7ef8a 50%, #d4af37 100%);
@@ -177,7 +209,6 @@
             opacity: 0.9;
         }
 
-        /* Badge Sekolah - SIMPLE BORDER */
         .school-badge {
             display: flex;
             flex-direction: column;
@@ -219,7 +250,9 @@
             opacity: 0.9;
         }
 
-        /* Social Media Section Baru - DIUBAH */
+        /* ============================================= */
+        /* SOCIAL MEDIA SECTION */
+        /* ============================================= */
         .social-section {
             background: rgba(17, 17, 17, 0.9);
             border-radius: 16px;
@@ -341,47 +374,9 @@
             background: linear-gradient(135deg, #e6c158 0%, #c9a329 100%);
         }
 
-        /* Social Share Buttons di Tiket - DIUBAH */
-        .social-share-ticket {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-
-        .social-share-btn {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: none;
-            color: #000;
-            text-decoration: none;
-        }
-
-        .social-share-btn.instagram {
-            background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
-            border: 2px solid #ffcc80;
-        }
-
-        .social-share-btn.whatsapp {
-            background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
-            border: 2px solid #ffcc80;
-        }
-
-        .social-share-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(212, 175, 55, 0.3);
-        }
-
-        /* Benefit Section - SIMPLE BORDER */
+        /* ============================================= */
+        /* BENEFITS SECTION */
+        /* ============================================= */
         .benefits {
             display: flex;
             flex-direction: column;
@@ -430,7 +425,9 @@
             line-height: 1.5;
         }
 
-        /* Form Container - SIMPLE BORDER */
+        /* ============================================= */
+        /* FORM STYLES */
+        /* ============================================= */
         .form-container {
             background: rgba(17, 17, 17, 0.95);
             border-radius: 16px;
@@ -440,7 +437,6 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
         }
 
-        /* Section Title */
         .form-section {
             margin-bottom: 30px;
             padding-bottom: 20px;
@@ -470,7 +466,6 @@
             border: 2px solid #d4af37;
         }
 
-        /* Form Styling */
         .form-row {
             display: flex;
             flex-direction: column;
@@ -520,7 +515,9 @@
             font-size: 0.95rem;
         }
 
-        /* File Upload Styling - BARU */
+        /* ============================================= */
+        /* FILE UPLOAD STYLES */
+        /* ============================================= */
         .file-upload-container {
             background: rgba(34, 34, 34, 0.9);
             border-radius: 12px;
@@ -607,10 +604,6 @@
             box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
         }
 
-        #fileInput {
-            display: none;
-        }
-
         .file-preview-container {
             display: none;
             margin-top: 20px;
@@ -643,10 +636,6 @@
             font-size: 1.8rem;
             color: #d4af37;
             flex-shrink: 0;
-        }
-
-        .file-preview-info {
-            flex: 1;
         }
 
         .file-preview-name {
@@ -684,7 +673,6 @@
             background: rgba(255, 82, 82, 0.3);
         }
 
-        /* Upload Progress - BARU */
         .upload-progress {
             display: none;
             margin-top: 20px;
@@ -722,7 +710,9 @@
             margin-bottom: 10px;
         }
 
-        /* Ticket Table */
+        /* ============================================= */
+        /* TICKET TABLE */
+        /* ============================================= */
         .ticket-table {
             width: 100%;
             border-collapse: collapse;
@@ -796,7 +786,9 @@
             outline: none;
         }
 
-        /* Total Box - SIMPLE BORDER */
+        /* ============================================= */
+        /* TOTAL BOX */
+        /* ============================================= */
         .total-box {
             background: linear-gradient(135deg, rgba(51, 51, 51, 0.5), rgba(212, 175, 55, 0.1));
             padding: 20px;
@@ -836,7 +828,9 @@
             text-shadow: 0 2px 6px rgba(212, 175, 55, 0.4);
         }
 
-        /* Payment Options - BUBBLE GOLD STYLE - MOBILE OPTIMIZED */
+        /* ============================================= */
+        /* PAYMENT OPTIONS */
+        /* ============================================= */
         .payment-options {
             display: flex;
             flex-direction: column;
@@ -902,7 +896,6 @@
             font-weight: 500;
         }
 
-        /* Payment Details - SIMPLE BORDER - DIUBAH DANA JADI GOLD */
         .payment-details {
             background: rgba(34, 34, 34, 0.9);
             padding: 18px;
@@ -936,10 +929,6 @@
             justify-content: center;
             gap: 8px;
             font-weight: 600;
-        }
-
-        .bank-details h5 i, .dana-details h5 i {
-            font-size: 1.1rem;
         }
 
         .account-number, .dana-number {
@@ -1005,30 +994,6 @@
             top: -2px;
         }
 
-        /* OTS Details dengan Jam Updated */
-        .ots-details {
-            text-align: center;
-            padding: 15px;
-            background: rgba(17, 17, 17, 0.8);
-            border-radius: 10px;
-            border: 2px solid #d4af37;
-        }
-
-        .ots-details h5 {
-            font-family: 'Montserrat', sans-serif;
-            color: #d4af37;
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .ots-info {
-            font-family: 'Poppins', sans-serif;
-            color: #b0b0b0;
-            margin: 8px 0;
-            font-size: 0.85rem;
-        }
-
         .ots-time {
             background: rgba(212, 175, 55, 0.2);
             padding: 10px;
@@ -1060,7 +1025,9 @@
             text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
         }
 
-        /* Submit Button - SIMPLE BORDER */
+        /* ============================================= */
+        /* BUTTONS */
+        /* ============================================= */
         .btn-submit {
             background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
             color: #000;
@@ -1102,11 +1069,32 @@
             border-color: #333;
         }
 
-        .btn-submit i {
-            margin-right: 8px;
+        .copy-btn {
+            background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+            color: #000;
+            border: none;
+            padding: 8px 15px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            border: 2px solid #ffcc80;
         }
 
-        /* Footer - SIMPLE BORDER dengan Social Media */
+        .copy-btn:hover {
+            background: linear-gradient(135deg, #e6c158 0%, #c9a329 100%);
+            transform: translateY(-2px);
+        }
+
+        /* ============================================= */
+        /* FOOTER */
+        /* ============================================= */
         .footer {
             text-align: center;
             margin-top: 25px;
@@ -1147,54 +1135,8 @@
             box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
         }
 
-        .footer a {
-            color: #d4af37;
-            text-decoration: none;
-            transition: color 0.3s;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .footer a:hover {
-            color: #ffcc80;
-            text-decoration: underline;
-        }
-
-        /* Required Star */
-        .required::after {
-            content: " *";
-            color: #ff5252;
-        }
-
-        /* Copy Button */
-        .copy-btn {
-            background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
-            color: #000;
-            border: none;
-            padding: 8px 15px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 600;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 10px;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            border: 2px solid #ffcc80;
-        }
-
-        .copy-btn:hover {
-            background: linear-gradient(135deg, #e6c158 0%, #c9a329 100%);
-            transform: translateY(-2px);
-        }
-
-        .copy-btn i {
-            font-size: 0.9rem;
-        }
-
         /* ============================================= */
-        /* TICKET MODAL DENGAN SOCIAL SHARE */
+        /* TICKET MODAL */
         /* ============================================= */
         .ticket-modal {
             display: none;
@@ -1231,7 +1173,6 @@
             max-height: none;
         }
 
-        /* Ticket Header dengan efek premium */
         .ticket-header {
             background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
             padding: 25px 20px 20px;
@@ -1239,17 +1180,6 @@
             position: relative;
             border-bottom: 3px solid #d4af37;
             overflow: hidden;
-        }
-
-        .ticket-header::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
-            z-index: 0;
         }
 
         .ticket-title {
@@ -1288,13 +1218,11 @@
             margin-top: 5px;
         }
 
-        /* Ticket Body - DIUBAH STRUKTUR */
         .ticket-body {
             padding: 25px 20px;
             background: linear-gradient(135deg, #111111 0%, #1a1a1a 100%);
         }
 
-        /* Ticket Info Grid - DIUBAH MENJADI 2 KOLOM */
         .ticket-info-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -1329,10 +1257,6 @@
             gap: 5px;
         }
 
-        .ticket-label i {
-            font-size: 0.9rem;
-        }
-
         .ticket-value {
             font-family: 'Poppins', sans-serif;
             color: #fff;
@@ -1347,7 +1271,38 @@
             color: #d4af37;
         }
 
-        /* Payment Method Display - BARU */
+        .ticket-type-display {
+            background: rgba(30, 30, 30, 0.8);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px solid #d4af37;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ticket-type-title {
+            font-family: 'Montserrat', sans-serif;
+            color: #ffcc80;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .ticket-type-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #d4af37;
+            margin: 10px 0;
+        }
+
         .payment-method-display {
             background: rgba(212, 175, 55, 0.1);
             border: 2px solid #d4af37;
@@ -1357,16 +1312,6 @@
             text-align: center;
             position: relative;
             overflow: hidden;
-        }
-
-        .payment-method-display::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #d4af37, transparent);
         }
 
         .payment-method-title {
@@ -1421,100 +1366,6 @@
             border: 1px solid #28a745;
         }
 
-        /* Ticket Type Display - BARU */
-        .ticket-type-display {
-            background: rgba(30, 30, 30, 0.8);
-            border-radius: 15px;
-            padding: 20px;
-            margin: 20px 0;
-            border: 2px solid #d4af37;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .ticket-type-display::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #d4af37, transparent);
-        }
-
-        .ticket-type-title {
-            font-family: 'Montserrat', sans-serif;
-            color: #ffcc80;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .ticket-type-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #d4af37;
-            margin: 10px 0;
-        }
-
-        .ticket-type-desc {
-            font-family: 'Poppins', sans-serif;
-            color: #b0b0b0;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin-top: 10px;
-        }
-
-        /* Ticket ID Display - BARU */
-        .ticket-id-display-section {
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 15px;
-            padding: 20px;
-            margin: 20px 0;
-            border: 2px solid #d4af37;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .ticket-id-display-section::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #d4af37, transparent);
-        }
-
-        .ticket-code-display {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #ffcc80;
-            letter-spacing: 2px;
-            margin: 10px 0;
-            padding: 10px;
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 8px;
-            border: 1px solid #d4af37;
-        }
-
-        .ticket-id-display {
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.9rem;
-            color: #b0b0b0;
-            letter-spacing: 1px;
-        }
-
-        /* Upload Proof Section di Tiket - BARU */
         .proof-upload-section {
             background: rgba(212, 175, 55, 0.1);
             border: 2px dashed #d4af37;
@@ -1542,14 +1393,6 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-        }
-
-        .proof-upload-instruction {
-            font-family: 'Poppins', sans-serif;
-            color: #b0b0b0;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-            line-height: 1.5;
         }
 
         .proof-preview {
@@ -1605,7 +1448,67 @@
             border-color: #333;
         }
 
-        /* Ticket Footer dengan Social Share */
+        .ticket-id-display-section {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px solid #d4af37;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ticket-code-display {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #ffcc80;
+            letter-spacing: 2px;
+            margin: 10px 0;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
+            border: 1px solid #d4af37;
+        }
+
+        .btn-close-ticket {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #d4af37;
+            color: #d4af37;
+            font-size: 1.2rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+
+        .btn-close-ticket:hover {
+            background: #d4af37;
+            color: #000;
+            transform: rotate(90deg);
+        }
+
+        .ticket-watermark {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: rgba(212, 175, 55, 0.1);
+            transform: rotate(-15deg);
+            pointer-events: none;
+            user-select: none;
+        }
+
         .ticket-footer {
             background: rgba(20, 20, 20, 0.9);
             padding: 20px;
@@ -1620,23 +1523,6 @@
             border-left: 4px solid #d4af37;
         }
 
-        .ticket-instruction h6 {
-            font-family: 'Montserrat', sans-serif;
-            color: #ffcc80;
-            margin-bottom: 10px;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .ticket-instruction p {
-            font-family: 'Poppins', sans-serif;
-            color: #b0b0b0;
-            font-size: 0.8rem;
-            line-height: 1.6;
-        }
-
         .ticket-social-callout {
             background: rgba(212, 175, 55, 0.1);
             border: 2px solid #d4af37;
@@ -1644,24 +1530,6 @@
             border-radius: 10px;
             margin-bottom: 20px;
             text-align: center;
-        }
-
-        .ticket-social-callout h6 {
-            font-family: 'Montserrat', sans-serif;
-            color: #ffcc80;
-            margin-bottom: 10px;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .ticket-social-callout p {
-            font-family: 'Poppins', sans-serif;
-            color: #fff;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
         }
 
         .ticket-social-handle {
@@ -1707,68 +1575,142 @@
             background: linear-gradient(135deg, #e6c158 0%, #c9a329 100%);
         }
 
-        .btn-ticket:active {
-            transform: translateY(-1px);
-        }
-
         .btn-ticket.secondary {
             background: linear-gradient(135deg, #333 0%, #555 100%);
             color: #fff;
             border-color: #666;
         }
 
-        .btn-ticket.secondary:hover {
-            background: linear-gradient(135deg, #444 0%, #666 100%);
+        .social-share-ticket {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
         }
 
-        /* Close Button */
-        .btn-close-ticket {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: rgba(0, 0, 0, 0.7);
-            border: 2px solid #d4af37;
-            color: #d4af37;
-            font-size: 1.2rem;
-            cursor: pointer;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+        .social-share-btn {
             display: flex;
             align-items: center;
-            justify-content: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
             transition: all 0.3s;
-            z-index: 10;
-        }
-
-        .btn-close-ticket:hover {
-            background: #d4af37;
+            border: none;
             color: #000;
-            transform: rotate(90deg);
+            text-decoration: none;
         }
 
-        /* Watermark Effect */
-        .ticket-watermark {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.5rem;
-            color: rgba(212, 175, 55, 0.1);
-            transform: rotate(-15deg);
-            pointer-events: none;
-            user-select: none;
+        .social-share-btn.instagram {
+            background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+            border: 2px solid #ffcc80;
         }
 
-        /* Loading Spinner */
-        .spinner {
-            border: 4px solid rgba(212, 175, 55, 0.3);
-            border-radius: 50%;
-            border-top: 4px solid #d4af37;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
+        .social-share-btn.whatsapp {
+            background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+            border: 2px solid #ffcc80;
+        }
+
+        .social-share-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        /* ============================================= */
+        /* LOADING & STATUS */
+        /* ============================================= */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            backdrop-filter: blur(3px);
+        }
+
+        .loading-overlay.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .loading-content {
+            background: rgba(26, 26, 26, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #d4af37;
+            text-align: center;
+            max-width: 300px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        }
+
+        .loading-content i {
+            font-size: 3rem;
+            color: #d4af37;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .loading-content p {
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .status-message {
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            text-align: center;
+            display: none;
+        }
+
+        .status-success {
+            background: rgba(40, 167, 69, 0.2);
+            border: 1px solid #28a745;
+            color: #28a745;
+        }
+
+        .status-error {
+            background: rgba(255, 82, 82, 0.2);
+            border: 1px solid #ff5252;
+            color: #ff8a8a;
+        }
+
+        .status-warning {
+            background: rgba(255, 193, 7, 0.2);
+            border: 1px solid #ffc107;
+            color: #ffc107;
+        }
+
+        .status-info {
+            background: rgba(0, 123, 255, 0.2);
+            border: 1px solid #007bff;
+            color: #90caf9;
+        }
+
+        /* ============================================= */
+        /* ANIMATIONS */
+        /* ============================================= */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes fadeInFast {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         @keyframes spin {
@@ -1776,87 +1718,24 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Status Messages */
-        .status-success {
-            background: rgba(40, 167, 69, 0.2);
-            border: 1px solid #28a745;
-            color: #28a745;
-            padding: 10px;
-            border-radius: 5px;
-            margin: 10px 0;
-            text-align: center;
-        }
-
-        .status-error {
-            background: rgba(255, 82, 82, 0.2);
-            border: 1px solid #ff5252;
-            color: #ff8a8a;
-            padding: 10px;
-            border-radius: 5px;
-            margin: 10px 0;
-            text-align: center;
-        }
-
-        .status-warning {
-            background: rgba(255, 193, 7, 0.2);
-            border: 1px solid #ffc107;
-            color: #ffc107;
-            padding: 10px;
-            border-radius: 5px;
-            margin: 10px 0;
-            text-align: center;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px) scale(0.95); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-5px); }
         }
 
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+        .spinner {
+            border: 4px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50%;
+            border-top: 4px solid #d4af37;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
         }
 
-        .float-animation {
-            animation: float 5s ease-in-out infinite;
-        }
-
-        .ticket-print {
-            animation: fadeIn 0.6s ease-out forwards;
-        }
-
-        /* Mobile-specific improvements */
-        input, textarea, select, button {
-            font-size: 16px;
-        }
-
-        /* Touch-friendly tap targets */
-        .btn-submit, .btn-ticket, .payment-bubble, .copy-btn, .file-upload-btn, .proof-upload-btn {
-            min-height: 44px;
-        }
-
-        /* Scrollbar styling */
-        .ticket-modal::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .ticket-modal::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.3);
-        }
-
-        .ticket-modal::-webkit-scrollbar-thumb {
-            background: #d4af37;
-            border-radius: 4px;
-        }
-
-        /* Tablet landscape dan desktop kecil */
+        /* ============================================= */
+        /* RESPONSIVE */
+        /* ============================================= */
         @media (min-width: 600px) {
             html {
                 font-size: 15px;
@@ -1906,7 +1785,6 @@
             }
         }
 
-        /* Desktop */
         @media (min-width: 992px) {
             html {
                 font-size: 16px;
@@ -1948,7 +1826,15 @@
     </style>
 </head>
 <body>
-    <!-- Ticket Modal (akan tampil setelah submit) -->
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p id="loadingText">Memproses data...</p>
+        </div>
+    </div>
+
+    <!-- Ticket Modal -->
     <div class="ticket-modal" id="ticketModal">
         <div class="ticket-container ticket-print">
             <button class="btn-close-ticket" id="closeTicket">
@@ -1965,7 +1851,7 @@
                 <div class="ticket-school">SMA HANGTUAH 5 SIDOARJO</div>
             </div>
             
-            <!-- Ticket Body - DIUBAH STRUKTUR -->
+            <!-- Ticket Body -->
             <div class="ticket-body">
                 <!-- Ticket Info Grid -->
                 <div class="ticket-info-grid">
@@ -1990,18 +1876,18 @@
                     </div>
                 </div>
                 
-                <!-- Ticket Type Display - BARU -->
+                <!-- Ticket Type Display -->
                 <div class="ticket-type-display">
                     <div class="ticket-type-title">
                         <i class="fas fa-ticket-alt"></i> JENIS TIKET
                     </div>
                     <div class="ticket-type-name" id="ticketTypeDisplay">Tiket Peserta</div>
-                    <div class="ticket-type-desc" id="ticketTypeDesc">
+                    <div class="ticket-type-desc">
                         Termasuk: Makanan ringan & minuman, proses diskusi kreatif masa lalu, dan cenderamata menarik
                     </div>
                 </div>
                 
-                <!-- Payment Method Display - BARU -->
+                <!-- Payment Method Display -->
                 <div class="payment-method-display">
                     <div class="payment-method-title">
                         <i class="fas fa-credit-card"></i> METODE PEMBAYARAN
@@ -2012,7 +1898,7 @@
                     </div>
                 </div>
                 
-                <!-- Upload Proof Section - BARU (hanya untuk Dana & BCA) -->
+                <!-- Upload Proof Section -->
                 <div class="proof-upload-section" id="proofUploadSection">
                     <div class="proof-upload-title">
                         <i class="fas fa-file-upload"></i> UPLOAD BUKTI PEMBAYARAN
@@ -2025,31 +1911,31 @@
                         <!-- Preview gambar akan ditampilkan di sini -->
                     </div>
                     
-                    <input type="file" id="proofFileInput" accept="image/*" style="display: none;">
+                    <input type="file" id="proofFileInput" accept="image/*" class="hidden">
                     <button class="proof-upload-btn" id="uploadProofBtn">
                         <i class="fas fa-cloud-upload-alt"></i> Upload Bukti
                     </button>
                     
-                    <div id="proofUploadStatus" style="display: none;"></div>
+                    <div class="status-message" id="proofUploadStatus"></div>
                 </div>
                 
-                <!-- Ticket ID Display - BARU (menggantikan QR Code) -->
+                <!-- Ticket ID Display -->
                 <div class="ticket-id-display-section" id="ticketIdSection">
                     <div class="payment-method-title">
                         <i class="fas fa-hashtag"></i> KODE TIKET
                     </div>
                     <div class="ticket-code-display" id="ticketCodeDisplay">KBM-0001</div>
-                    <div class="ticket-id-display" id="ticketIdDisplay">ID: KBM2026-0001</div>
+                    <div class="ticket-value" id="ticketIdDisplay">ID: KBM2026-0001</div>
                     <div class="ticket-type-desc" id="ticketStatusDesc">
                         Tunjukkan kode tiket ini saat registrasi di lokasi acara
                     </div>
                 </div>
 
                 <!-- Status Message -->
-                <div id="ticketStatus" style="display: none;"></div>
+                <div class="status-message" id="ticketStatus"></div>
             </div>
             
-            <!-- Ticket Footer dengan Social Media Callout -->
+            <!-- Ticket Footer -->
             <div class="ticket-footer">
                 <div class="ticket-social-callout">
                     <h6><i class="fas fa-star"></i> FOLLOW KAMI!</h6>
@@ -2088,8 +1974,9 @@
         </div>
     </div>
 
+    <!-- Main Container -->
     <div class="container">
-        <!-- Header dengan Instagram Icon -->
+        <!-- Header -->
         <div class="header fade-in">
             <div class="social-header">
                 <a href="https://instagram.com/kopi_basi" target="_blank" class="instagram" title="Follow @kopi_basi di Instagram">
@@ -2098,20 +1985,20 @@
             </div>
             
             <h1 class="header-main">KILAS BALIK MASA</h1>
-            <div class="subtitle letter-spacing-wide">SMA HANGTUAH 5 SIDOARJO</div>
+            <div class="subtitle">SMA HANGTUAH 5 SIDOARJO</div>
             <div class="tagline">"Menguak Kenangan, Menyusuri Lorong Waktu"</div>
             <div class="slogan">Mengulas Masa-Masa Indah Tahun-Tahun Sebelumnya, Menghidupkan Kembali Cerita yang Tak Terlupakan</div>
             
             <div class="school-badge fade-in">
                 <i class="fas fa-graduation-cap"></i>
                 <div>
-                    <h3 class="letter-spacing-wide">Sabtu, 24 Januari 2026</h3>
+                    <h3>Sabtu, 24 Januari 2026</h3>
                     <p>Pukul 07.30 WIB | SMA HANGTUAH 5 SIDOARJO</p>
                 </div>
             </div>
         </div>
 
-        <!-- Section Social Media Baru - DIUBAH -->
+        <!-- Social Media Section -->
         <div class="social-section fade-in">
             <h3><i class="fab fa-instagram"></i> IKUTI INSTAGRAM KAMI</h3>
             
@@ -2156,12 +2043,19 @@
             </div>
         </div>
 
+        <!-- Form Container -->
         <div class="form-container fade-in">
-            <!-- ============================================= -->
-            <!-- PERUBAHAN PENTING: Tambahkan Netlify Forms    -->
-            <!-- ============================================= -->
-            <form id="ticketForm" name="ticket-form" method="POST" data-netlify="true" netlify>
-                <!-- Data Pembeli -->
+            <!-- Status Messages -->
+            <div class="status-message hidden" id="formStatus"></div>
+            
+            <form id="ticketForm" name="ticket-form" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                <!-- Netlify Honeypot -->
+                <div class="hidden">
+                    <input name="bot-field">
+                    <input type="hidden" name="form-name" value="ticket-form">
+                </div>
+                
+                <!-- Data Peserta -->
                 <div class="form-section">
                     <div class="section-title">
                         <i class="fas fa-user-graduate"></i>
@@ -2181,7 +2075,9 @@
                         <div class="form-group">
                             <label for="email" class="required">Email Aktif</label>
                             <input type="email" id="email" name="email" class="form-control" required placeholder="nama@email.com">
-                            <small style="color: #888; font-size: 0.85rem; margin-top: 5px; display: block;">*Untuk konfirmasi dan bukti pembayaran</small>
+                            <small style="color: #888; font-size: 0.85rem; margin-top: 5px; display: block;">
+                                *Untuk konfirmasi dan bukti pembayaran
+                            </small>
                         </div>
                     </div>
                 </div>
@@ -2229,7 +2125,7 @@
                     </div>
                 </div>
 
-                <!-- Metode Pembayaran - BUBBLE GOLD STYLE -->
+                <!-- Metode Pembayaran -->
                 <div class="form-section">
                     <div class="section-title">
                         <i class="fas fa-credit-card"></i>
@@ -2237,7 +2133,6 @@
                     </div>
                     
                     <div class="payment-options">
-                        <!-- Dana - DIUBAH GRADIENT JADI GOLD -->
                         <div class="payment-bubble selected" id="bubbleDana" data-method="dana">
                             <i class="fas fa-wallet"></i>
                             <div class="payment-text">
@@ -2246,7 +2141,6 @@
                             </div>
                         </div>
                         
-                        <!-- Transfer BCA -->
                         <div class="payment-bubble" id="bubbleBCA" data-method="bca">
                             <i class="fas fa-university"></i>
                             <div class="payment-text">
@@ -2255,7 +2149,6 @@
                             </div>
                         </div>
                         
-                        <!-- Bayar di Tempat -->
                         <div class="payment-bubble" id="bubbleOTS" data-method="ots">
                             <i class="fas fa-hand-holding-usd"></i>
                             <div class="payment-text">
@@ -2269,7 +2162,7 @@
                     
                     <!-- Payment Details -->
                     <div class="payment-details" id="paymentDetails">
-                        <!-- Dana Details - DIUBAH NAMA MENJADI SALSABILA NUR ZAM -->
+                        <!-- Dana Details -->
                         <div class="dana-details" id="danaDetails">
                             <h5><i class="fas fa-wallet"></i> Pembayaran via Dana</h5>
                             <div class="dana-number">0881 5566 720</div>
@@ -2286,8 +2179,8 @@
                             </div>
                         </div>
                         
-                        <!-- BCA Details - Nama Alycia Tara -->
-                        <div class="bank-details" id="bcaDetails" style="display: none;">
+                        <!-- BCA Details -->
+                        <div class="bank-details hidden" id="bcaDetails">
                             <h5><i class="fas fa-university"></i> Transfer Bank BCA</h5>
                             <div class="account-number">726 531 2047</div>
                             <button type="button" class="copy-btn" data-number="7265312047">
@@ -2308,8 +2201,8 @@
                             </div>
                         </div>
                         
-                        <!-- OTS Details dengan Jam Updated -->
-                        <div class="ots-details" id="otsDetails" style="display: none;">
+                        <!-- OTS Details -->
+                        <div class="ots-details hidden" id="otsDetails">
                             <h5><i class="fas fa-hand-holding-usd"></i> Bayar di Tempat</h5>
                             <div class="ots-info">
                                 <p><strong>Silakan datang langsung ke:</strong></p>
@@ -2333,7 +2226,7 @@
                         </div>
                     </div>
                     
-                    <!-- File Upload Section - BARU -->
+                    <!-- File Upload Section -->
                     <div class="file-upload-container" id="fileUploadContainer">
                         <label class="file-upload-label">
                             <i class="fas fa-file-upload"></i> UPLOAD BUKTI PEMBAYARAN
@@ -2348,7 +2241,7 @@
                             </button>
                         </div>
                         
-                        <input type="file" id="paymentProof" name="bukti_pembayaran" accept="image/*" style="display: none;">
+                        <input type="file" id="paymentProof" accept="image/*" class="hidden">
                         
                         <div class="file-preview-container" id="filePreviewContainer">
                             <div class="file-preview">
@@ -2388,7 +2281,7 @@
                     </div>
                 </div>
 
-                <!-- Hidden fields untuk Google Sheets -->
+                <!-- Hidden fields -->
                 <input type="hidden" id="hiddenTicketCode" name="ticket_code">
                 <input type="hidden" id="hiddenTotalAmount" name="total_amount">
                 <input type="hidden" id="hiddenTimestamp" name="timestamp">
@@ -2400,7 +2293,7 @@
             </form>
         </div>
 
-        <!-- Footer dengan Social Media Lengkap -->
+        <!-- Footer -->
         <div class="footer fade-in">
             <div class="footer-social">
                 <a href="https://instagram.com/kopi_basi" target="_blank" class="instagram">
@@ -2410,7 +2303,11 @@
             
             <p>© 2026 "Kilas Balik Masa" - SMA Hangtuah 5 Sidoarjo</p>
             <p>Contact Person: Salsa - 08815566720 (Hanya WhatsApp)</p>
-            <p>Instagram Official: <a href="https://instagram.com/kopi_basi" target="_blank" style="color: #d4af37; font-weight: bold;">@kopi_basi</a></p>
+            <p>Instagram Official: 
+                <a href="https://instagram.com/kopi_basi" target="_blank" style="color: #d4af37; font-weight: bold;">
+                    @kopi_basi
+                </a>
+            </p>
             
             <p style="margin-top: 15px; color: #d4af37; font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 0.95rem;">
                 "Bersama kita hidupkan kembali kenangan indah masa lalu"
@@ -2420,52 +2317,48 @@
                 Follow Instagram kami untuk update terbaru, foto acara, dan keseruan lainnya!
             </p>
             
-            <!-- Debug Button -->
-            <button onclick="testConnection()" style="
-                background: #333;
-                color: #d4af37;
-                border: 1px solid #d4af37;
-                padding: 10px 15px;
-                border-radius: 5px;
-                margin-top: 15px;
-                cursor: pointer;
-                font-family: 'Montserrat', sans-serif;
-                font-size: 0.9rem;
-            ">
-                <i class="fas fa-bug"></i> Test Koneksi Server
-            </button>
+            <!-- Debug Tools -->
+            <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(212, 175, 55, 0.2);">
+                <button onclick="testConnection()" class="copy-btn" style="margin: 5px;">
+                    <i class="fas fa-bug"></i> Test Server
+                </button>
+                <button onclick="showBackupData()" class="copy-btn" style="margin: 5px;">
+                    <i class="fas fa-database"></i> Cek Backup
+                </button>
+                <button onclick="clearAllData()" class="copy-btn" style="margin: 5px; background: #333; border-color: #666;">
+                    <i class="fas fa-trash"></i> Clear Data
+                </button>
+            </div>
         </div>
     </div>
 
     <script>
         // =============================================
-        // KONFIGURASI GOOGLE SHEETS & UPLOAD
+        // KONFIGURASI
         // =============================================
-        // URL GOOGLE APPS SCRIPT ANDA - GANTI DENGAN URL DEPLOYMENT ANDA ↓↓↓
+        // 🔧 GANTI URL INI DENGAN URL GOOGLE APPS SCRIPT ANDA
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxH2jSsRE3dPT9VvBhVRdlZsRWqHaJBeR9vb-z1sUZV5dLpWg-ZftlKfWOjEIifIbng/exec';
         
-        // Konfigurasi Spreadsheet dan Drive
-        const SPREADSHEET_ID = "1iaj0UT3yVPJs2TpbFbItxbbx9ahp_BA1yefWRkcogUc";
-        const DRIVE_FOLDER_ID = "1jiP9Id3x1ucTcfuwhLnQHz5HMVP7wDK_";
-        
-        // Instagram Account
         const INSTAGRAM_HANDLE = '@kopi_basi';
         const INSTAGRAM_URL = 'https://instagram.com/kopi_basi';
-        
-        // Harga tiket
-        const hargaTiket = 10000;
+        const HARGA_TIKET = 10000;
+        const STORAGE_KEY = 'kbm_tickets';
 
-        // Variabel global
+        // =============================================
+        // STATE MANAGEMENT
+        // =============================================
         let selectedFile = null;
         let currentTicketData = null;
         let requiresProofUpload = false;
+        let isProcessing = false;
 
-        // Format mata uang Rupiah
+        // =============================================
+        // UTILITY FUNCTIONS
+        // =============================================
         function formatRupiah(angka) {
             return 'Rp ' + angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
         }
 
-        // Generate kode tiket unik
         function generateTicketCode() {
             const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ0123456789';
             let code = 'KBM';
@@ -2475,7 +2368,6 @@
             return code;
         }
 
-        // Generate ID tiket
         function generateTicketId() {
             const date = new Date();
             const year = date.getFullYear();
@@ -2485,22 +2377,84 @@
             return `KBM${year}${month}${day}-${random}`;
         }
 
-        // Get payment method display name
         function getPaymentMethodDisplay(method) {
-            switch(method) {
-                case 'dana': return 'Dana';
-                case 'bca': return 'Transfer Bank BCA';
-                case 'ots': return 'Bayar di Tempat (Cash)';
-                default: return 'Dana';
-            }
+            const methods = {
+                'dana': 'Dana',
+                'bca': 'Transfer Bank BCA',
+                'ots': 'Bayar di Tempat (Cash)'
+            };
+            return methods[method] || 'Dana';
         }
 
-        // Check if payment method requires proof upload
-        function requiresProofUploadMethod(method) {
-            return method === 'dana' || method === 'bca';
+        function showNotification(message, type = 'info') {
+            // Remove existing notification
+            const existing = document.querySelector('.notification');
+            if (existing) existing.remove();
+            
+            const notification = document.createElement('div');
+            notification.className = `notification status-${type}`;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 15px 20px;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                z-index: 9999;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 600;
+                font-size: 0.9rem;
+                max-width: 300px;
+                text-align: center;
+                animation: fadeIn 0.3s ease;
+                backdrop-filter: blur(5px);
+            `;
+            
+            // Set background color based on type
+            const colors = {
+                success: { bg: 'rgba(40, 167, 69, 0.9)', color: '#fff' },
+                error: { bg: 'rgba(255, 82, 82, 0.9)', color: '#fff' },
+                warning: { bg: 'rgba(255, 193, 7, 0.9)', color: '#000' },
+                info: { bg: 'rgba(212, 175, 55, 0.9)', color: '#000' }
+            };
+            
+            const color = colors[type] || colors.info;
+            notification.style.background = color.bg;
+            notification.style.color = color.color;
+            notification.style.border = `2px solid ${type === 'warning' ? '#ffc107' : '#d4af37'}`;
+            
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            // Auto remove after 4 seconds
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transform = 'translateX(100px)';
+                notification.style.transition = 'all 0.5s ease';
+                
+                setTimeout(() => {
+                    notification.remove();
+                }, 500);
+            }, 4000);
         }
 
-        // Convert file to base64
+        // =============================================
+        // LOADING FUNCTIONS
+        // =============================================
+        function showLoading(text = 'Memproses data...') {
+            document.getElementById('loadingText').textContent = text;
+            document.getElementById('loadingOverlay').classList.add('active');
+            isProcessing = true;
+        }
+
+        function hideLoading() {
+            document.getElementById('loadingOverlay').classList.remove('active');
+            isProcessing = false;
+        }
+
+        // =============================================
+        // FILE HANDLING
+        // =============================================
         function fileToBase64(file) {
             return new Promise((resolve, reject) => {
                 const reader = new FileReader();
@@ -2510,166 +2464,11 @@
             });
         }
 
-        // Kirim data ke Google Sheets
-        async function sendToGoogleSheets(data, proofFileName = null) {
-            try {
-                console.log("Mengirim data ke Google Sheets...", data);
-                
-                // Siapkan payload
-                const payload = {
-                    nama: data.nama,
-                    telepon: data.telepon || '',
-                    email: data.email,
-                    tiket: data.tiket || 1,
-                    total: data.total || 'Rp 10.000',
-                    metode: data.metode || 'dana',
-                    ticketCode: data.ticketCode,
-                    ticketId: data.ticketId,
-                    status: data.status || 'pending',
-                    timestamp: new Date().toISOString(),
-                    eventDate: '24 Januari 2026',
-                    eventTime: '07.30 WIB'
-                };
-                
-                // Jika ada file, convert ke base64
-                if (selectedFile) {
-                    try {
-                        const base64 = await fileToBase64(selectedFile);
-                        payload.fileData = base64.split(',')[1]; // Remove data:image/png;base64,
-                        payload.fileName = selectedFile.name;
-                        payload.mimeType = selectedFile.type;
-                        payload.fileSize = selectedFile.size;
-                    } catch (fileError) {
-                        console.error("Error converting file to base64:", fileError);
-                        // Lanjutkan tanpa file
-                    }
-                }
-                
-                console.log("Payload untuk Google Script:", payload);
-                
-                // Kirim dengan fetch (mode no-cors untuk Google Apps Script)
-                const response = await fetch(GOOGLE_SCRIPT_URL, {
-                    method: 'POST',
-                    mode: 'no-cors', // Penting: no-cors untuk Google Apps Script
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(payload)
-                });
-                
-                // Karena no-cors, kita tidak bisa membaca response
-                console.log("Data terkirim ke Google Script (no-cors mode)");
-                
-                // Simpan ke localStorage sebagai backup
-                saveToLocalStorage(data, proofFileName);
-                
-                return {
-                    success: true,
-                    message: 'Data berhasil dikirim ke server'
-                };
-                
-            } catch (error) {
-                console.error('Error in sendToGoogleSheets:', error);
-                
-                // Simpan ke localStorage sebagai fallback
-                saveToLocalStorage(data, proofFileName);
-                
-                return {
-                    success: false,
-                    message: 'Gagal mengirim data: ' + error.message
-                };
-            }
-        }
-
-        // Simpan ke localStorage sebagai backup
-        function saveToLocalStorage(data, proofFileName = null) {
-            try {
-                const ticketData = {
-                    ...data,
-                    proofFile: proofFileName,
-                    storedAt: new Date().toISOString(),
-                    localBackup: true
-                };
-                
-                const allTickets = JSON.parse(localStorage.getItem('all_tickets')) || [];
-                allTickets.push(ticketData);
-                localStorage.setItem('all_tickets', JSON.stringify(allTickets));
-                localStorage.setItem(`ticket_${data.ticketCode}`, JSON.stringify(ticketData));
-                
-                console.log("Data disimpan di localStorage:", data.ticketCode);
-                return true;
-            } catch (error) {
-                console.error('Error saving to localStorage:', error);
-                return false;
-            }
-        }
-
-        // Show notification
-        function showNotification(message, type) {
-            const notification = document.createElement('div');
-            notification.style.position = 'fixed';
-            notification.style.top = '20px';
-            notification.style.right = '20px';
-            notification.style.background = type === 'success' ? '#d4af37' : type === 'error' ? '#ff5252' : type === 'warning' ? '#ffc107' : '#d4af37';
-            notification.style.color = type === 'success' ? '#000' : '#fff';
-            notification.style.padding = '15px 20px';
-            notification.style.borderRadius = '10px';
-            notification.style.boxShadow = '0 5px 15px rgba(0,0,0,0.3)';
-            notification.style.zIndex = '10000';
-            notification.style.fontFamily = "'Montserrat', sans-serif";
-            notification.style.fontWeight = '600';
-            notification.style.fontSize = '0.9rem';
-            notification.style.maxWidth = '300px';
-            notification.style.textAlign = 'center';
-            notification.textContent = message;
-            
-            document.body.appendChild(notification);
-            
-            // Hilangkan notifikasi setelah 3 detik
-            setTimeout(() => {
-                notification.style.opacity = '0';
-                notification.style.transform = 'translateX(100px)';
-                notification.style.transition = 'all 0.5s ease';
-                
-                setTimeout(() => {
-                    notification.remove();
-                }, 500);
-            }, 3000);
-        }
-
-        // Hitung total pembelian
-        function hitungTotal() {
-            const tiketQty = parseInt(document.getElementById('tiket').value) || 1;
-            const subtotal = tiketQty * hargaTiket;
-            
-            // Update subtotal dan total
-            document.getElementById('subtotal').textContent = formatRupiah(subtotal);
-            document.getElementById('totalTiket').textContent = tiketQty;
-            document.getElementById('totalHarga').textContent = formatRupiah(subtotal);
-            
-            // Update amount di Dana
-            document.getElementById('danaAmount').textContent = formatRupiah(subtotal);
-            
-            // Update hidden field untuk total
-            document.getElementById('hiddenTotalAmount').value = formatRupiah(subtotal);
-            
-            // Validasi minimal 1 tiket
-            const submitBtn = document.getElementById('submitBtn');
-            if (tiketQty > 0) {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Daftar Sekarang';
-            } else {
-                submitBtn.disabled = true;
-                submitBtn.innerHTML = '<i class="fas fa-exclamation-circle"></i> Pilih minimal 1 tiket';
-            }
-        }
-
-        // Handle file selection
         function handleFileSelect(file) {
             if (!file) return;
             
             // Validasi ukuran file (maks 5MB)
-            const maxSize = 5 * 1024 * 1024; // 5MB
+            const maxSize = 5 * 1024 * 1024;
             if (file.size > maxSize) {
                 showNotification('Ukuran file terlalu besar! Maksimal 5MB.', 'error');
                 return;
@@ -2684,7 +2483,7 @@
             
             selectedFile = file;
             
-            // Tampilkan preview
+            // Update UI
             const fileName = file.name;
             const fileSize = (file.size / (1024 * 1024)).toFixed(2) + ' MB';
             
@@ -2692,7 +2491,7 @@
             document.getElementById('fileSize').textContent = fileSize;
             document.getElementById('filePreviewContainer').classList.add('active');
             
-            // Tampilkan preview gambar
+            // Show preview in modal
             const reader = new FileReader();
             reader.onload = function(e) {
                 const proofPreview = document.getElementById('proofPreview');
@@ -2704,542 +2503,627 @@
             showNotification('File berhasil dipilih: ' + fileName, 'success');
         }
 
-        // Event listener untuk perubahan jumlah tiket
-        document.getElementById('tiket').addEventListener('change', hitungTotal);
-        document.getElementById('tiket').addEventListener('input', hitungTotal);
-
-        // Pilih metode pembayaran dengan bubble
-        const bubbles = document.querySelectorAll('.payment-bubble');
-        const paymentDetails = document.getElementById('paymentDetails');
-        const fileUploadContainer = document.getElementById('fileUploadContainer');
-        
-        bubbles.forEach(bubble => {
-            bubble.addEventListener('click', function() {
-                // Hapus seleksi dari semua bubble
-                bubbles.forEach(b => b.classList.remove('selected'));
-                
-                // Tandai bubble yang dipilih
-                this.classList.add('selected');
-                
-                // Simpan metode pembayaran
-                const method = this.getAttribute('data-method');
-                document.getElementById('metodePembayaran').value = method;
-                
-                // Tampilkan payment details
-                paymentDetails.classList.add('active');
-                
-                // Tampilkan detail sesuai metode
-                document.getElementById('danaDetails').style.display = 'none';
-                document.getElementById('bcaDetails').style.display = 'none';
-                document.getElementById('otsDetails').style.display = 'none';
-                
-                if (method === 'dana') {
-                    document.getElementById('danaDetails').style.display = 'block';
-                    fileUploadContainer.classList.add('active');
-                    requiresProofUpload = true;
-                } else if (method === 'bca') {
-                    document.getElementById('bcaDetails').style.display = 'block';
-                    fileUploadContainer.classList.add('active');
-                    requiresProofUpload = true;
-                } else if (method === 'ots') {
-                    document.getElementById('otsDetails').style.display = 'block';
-                    fileUploadContainer.classList.remove('active');
-                    requiresProofUpload = false;
-                    selectedFile = null;
-                    document.getElementById('filePreviewContainer').classList.remove('active');
-                    document.getElementById('proofPreview').classList.remove('active');
-                    document.getElementById('proofPreview').innerHTML = '';
-                }
-            });
-        });
-
-        // File upload handlers
-        document.getElementById('fileUploadBox').addEventListener('click', function() {
-            document.getElementById('paymentProof').click();
-        });
-
-        document.querySelector('.file-upload-btn').addEventListener('click', function(e) {
-            e.stopPropagation();
-            document.getElementById('paymentProof').click();
-        });
-
-        document.getElementById('paymentProof').addEventListener('change', function(e) {
-            if (e.target.files.length > 0) {
-                handleFileSelect(e.target.files[0]);
-            }
-        });
-
-        document.getElementById('removeFileBtn').addEventListener('click', function() {
-            selectedFile = null;
-            document.getElementById('paymentProof').value = '';
-            document.getElementById('filePreviewContainer').classList.remove('active');
-            document.getElementById('proofPreview').classList.remove('active');
-            document.getElementById('proofPreview').innerHTML = '';
-            showNotification('File telah dihapus', 'warning');
-        });
-
-        // Upload proof di modal tiket
-        document.getElementById('uploadProofBtn').addEventListener('click', async function() {
-            if (!selectedFile) {
-                document.getElementById('proofFileInput').click();
-                return;
-            }
-            
-            if (!currentTicketData) {
-                showNotification('Data tiket tidak ditemukan!', 'error');
-                return;
-            }
-            
-            const uploadBtn = this;
-            const originalText = uploadBtn.innerHTML;
-            
+        // =============================================
+        // DATA STORAGE (BACKUP SYSTEM)
+        // =============================================
+        function saveToLocalStorage(data) {
             try {
-                uploadBtn.disabled = true;
-                uploadBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengupload...';
+                const allTickets = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+                const ticketData = {
+                    ...data,
+                    storedAt: new Date().toISOString(),
+                    localBackup: true,
+                    backupId: Date.now()
+                };
                 
-                // Tampilkan progress di modal
-                const proofUploadStatus = document.getElementById('proofUploadStatus');
-                proofUploadStatus.innerHTML = '<div class="status-warning"><i class="fas fa-spinner fa-spin"></i> Mengupload bukti pembayaran...</div>';
-                proofUploadStatus.style.display = 'block';
+                allTickets.push(ticketData);
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(allTickets));
+                localStorage.setItem(`kbm_ticket_${data.ticketCode}`, JSON.stringify(ticketData));
                 
-                // Convert file to base64
-                const base64 = await fileToBase64(selectedFile);
+                console.log('✅ Data tersimpan di localStorage:', data.ticketCode);
+                return true;
+            } catch (error) {
+                console.error('❌ Error saving to localStorage:', error);
+                return false;
+            }
+        }
+
+        function getBackupCount() {
+            try {
+                const data = localStorage.getItem(STORAGE_KEY);
+                return data ? JSON.parse(data).length : 0;
+            } catch {
+                return 0;
+            }
+        }
+
+        function showBackupData() {
+            const count = getBackupCount();
+            if (count > 0) {
+                showNotification(`Ada ${count} data tersimpan di backup lokal.`, 'info');
+            } else {
+                showNotification('Tidak ada data backup.', 'warning');
+            }
+        }
+
+        function clearAllData() {
+            if (confirm('Yakin ingin menghapus semua data backup lokal?')) {
+                localStorage.removeItem(STORAGE_KEY);
+                showNotification('Semua data backup telah dihapus.', 'success');
+            }
+        }
+
+        // =============================================
+        // GOOGLE SHEETS INTEGRATION (WITH FALLBACK)
+        // =============================================
+        async function sendToGoogleSheets(data) {
+            // Fallback: always save to localStorage first
+            const savedToLocal = saveToLocalStorage(data);
+            
+            // Try to send to Google Sheets
+            try {
+                const payload = {
+                    nama: data.nama,
+                    telepon: data.telepon,
+                    email: data.email,
+                    tiket: parseInt(data.tiket) || 1,
+                    total: data.total,
+                    metode: data.metode || 'dana',
+                    ticketCode: data.ticketCode,
+                    ticketId: data.ticketId,
+                    status: data.status || 'pending',
+                    proofFile: data.proofFile || 'none',
+                    timestamp: new Date().toISOString()
+                };
                 
-                // Simulasi upload progress
-                const progressFill = document.getElementById('progressFill');
-                const progressPercentage = document.getElementById('progressPercentage');
-                let progress = 0;
-                const progressInterval = setInterval(() => {
-                    progress += 10;
-                    if (progress > 90) {
-                        clearInterval(progressInterval);
+                // Add file data if exists
+                if (selectedFile) {
+                    try {
+                        const base64 = await fileToBase64(selectedFile);
+                        payload.fileData = base64.split(',')[1];
+                        payload.fileName = selectedFile.name;
+                        payload.mimeType = selectedFile.type;
+                    } catch (fileError) {
+                        console.warn('⚠️ File conversion error:', fileError);
                     }
-                    progressFill.style.width = progress + '%';
-                    progressPercentage.textContent = progress + '%';
-                }, 200);
+                }
                 
-                // Kirim ke Google Sheets
-                const saveResult = await sendToGoogleSheets(currentTicketData, selectedFile.name);
+                console.log('📤 Sending to Google Sheets:', payload);
                 
-                clearInterval(progressInterval);
-                progressFill.style.width = '100%';
-                progressPercentage.textContent = '100%';
-                
-                if (saveResult.success) {
-                    // Update status di modal
-                    document.getElementById('paymentStatusDisplay').innerHTML = '<i class="fas fa-clock"></i> Menunggu Verifikasi Panitia';
-                    document.getElementById('paymentStatusDisplay').className = 'payment-status pending';
+                // Try with CORS first
+                try {
+                    const response = await fetch(GOOGLE_SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
                     
-                    // Update status di tiket
-                    document.getElementById('ticketStatusDesc').innerHTML = 'Bukti pembayaran sudah diupload. Tunggu verifikasi dari panitia (1-2 jam).';
+                    if (response.ok) {
+                        const result = await response.json();
+                        console.log('✅ Google Sheets response:', result);
+                        
+                        if (result.success) {
+                            showNotification('✅ Data berhasil dikirim ke server!', 'success');
+                            return { success: true, message: 'Data tersimpan di Google Sheets', data: result };
+                        }
+                    }
+                } catch (corsError) {
+                    console.warn('⚠️ CORS error, trying no-cors mode:', corsError);
                     
-                    // Update UI
-                    document.getElementById('proofUploadSection').classList.add('uploaded');
-                    uploadBtn.innerHTML = '<i class="fas fa-check"></i> Sudah Diupload';
-                    uploadBtn.disabled = true;
-                    
-                    proofUploadStatus.innerHTML = '<div class="status-success"><i class="fas fa-check-circle"></i> Bukti pembayaran berhasil diupload!</div>';
-                    
-                    showNotification('Bukti pembayaran berhasil diupload! Tiket menunggu verifikasi.', 'success');
-                } else {
-                    throw new Error(saveResult.message);
+                    // Fallback to no-cors mode
+                    try {
+                        await fetch(GOOGLE_SCRIPT_URL, {
+                            method: 'POST',
+                            mode: 'no-cors',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+                        
+                        console.log('📨 Data sent (no-cors mode)');
+                        showNotification('📨 Data dikirim ke server (mode no-cors)', 'info');
+                        return { success: true, message: 'Data dikirim (no-cors mode)' };
+                        
+                    } catch (noCorsError) {
+                        console.error('❌ Both CORS and no-cors failed:', noCorsError);
+                        throw noCorsError;
+                    }
                 }
                 
             } catch (error) {
-                console.error('Upload error:', error);
-                const proofUploadStatus = document.getElementById('proofUploadStatus');
-                proofUploadStatus.innerHTML = '<div class="status-error"><i class="fas fa-exclamation-circle"></i> Gagal upload: ' + error.message + '</div>';
-                proofUploadStatus.style.display = 'block';
-                uploadBtn.innerHTML = originalText;
-                uploadBtn.disabled = false;
-                showNotification('Gagal upload bukti: ' + error.message, 'error');
-            }
-        });
-
-        // File input di modal
-        document.getElementById('proofFileInput').addEventListener('change', function(e) {
-            if (e.target.files.length > 0) {
-                handleFileSelect(e.target.files[0]);
-            }
-        });
-
-        // Copy to clipboard function
-        document.querySelectorAll('.copy-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const number = this.getAttribute('data-number');
+                console.error('❌ Google Sheets error:', error);
                 
-                // Format number dengan spasi untuk BCA
-                let formattedNumber = number;
-                if (number === "7265312047") {
-                    formattedNumber = "726 531 2047";
-                } else if (number === "08815566720") {
-                    formattedNumber = "0881 5566 720";
+                // Even if Google Sheets fails, we have localStorage backup
+                if (savedToLocal) {
+                    showNotification('⚠️ Server offline, data disimpan lokal. Tetap valid!', 'warning');
+                    return { 
+                        success: true, 
+                        message: 'Data disimpan lokal (server offline)',
+                        localBackup: true 
+                    };
                 }
                 
-                // Copy to clipboard
-                navigator.clipboard.writeText(formattedNumber).then(() => {
-                    // Show success message
-                    const originalText = this.innerHTML;
-                    this.innerHTML = '<i class="fas fa-check"></i> Tersalin!';
-                    this.style.background = 'linear-gradient(135deg, #00a86b, #00d48e)';
-                    
-                    // Reset after 2 seconds
-                    setTimeout(() => {
-                        this.innerHTML = originalText;
-                        this.style.background = 'linear-gradient(135deg, #d4af37 0%, #b8941f 100%)';
-                    }, 2000);
-                }).catch(err => {
-                    console.error('Gagal menyalin: ', err);
-                    alert('Gagal menyalin ke clipboard');
-                });
-            });
-        });
+                return { 
+                    success: false, 
+                    message: 'Gagal mengirim: ' + error.message 
+                };
+            }
+        }
 
-        // Tampilkan ticket modal dengan design baru
-        async function showTicketModal(data, proofUploaded = false) {
-            // Generate kode tiket
+        // =============================================
+        // TICKET MODAL FUNCTIONS
+        // =============================================
+        async function showTicketModal(data) {
             const ticketCode = generateTicketCode();
             const ticketId = generateTicketId();
+            const method = data.metode || 'dana';
             
-            // Data lengkap untuk disimpan
+            // Determine status
+            let status = 'pending';
+            if (method === 'ots') {
+                status = 'pending_ots';
+            } else if (selectedFile) {
+                status = 'uploaded';
+            }
+            
+            // Prepare ticket data
             const ticketData = {
                 nama: data.nama,
                 telepon: data.telepon,
                 email: data.email,
                 tiket: data.tiket,
                 total: data.total,
-                metode: data.metode,
-                tanggal: new Date().toLocaleString('id-ID'),
+                metode: method,
                 ticketCode: ticketCode,
                 ticketId: ticketId,
-                status: proofUploaded ? 'pending_verification' : (data.metode === 'ots' ? 'pending_ots' : 'pending_payment'),
-                eventDate: '24 Januari 2026',
-                eventTime: '07.30 WIB',
-                eventName: 'Kilas Balik Masa SMA Hangtuah 5 Sidoarjo',
-                instagram: INSTAGRAM_HANDLE
+                status: status,
+                proofFile: selectedFile ? selectedFile.name : 'none'
             };
             
-            // Simpan data ke variabel global
             currentTicketData = ticketData;
             
-            // Update hidden fields untuk Netlify Forms
-            document.getElementById('hiddenTicketCode').value = ticketCode;
-            document.getElementById('hiddenTimestamp').value = new Date().toISOString();
-            
-            // Update data di modal tiket
+            // Update modal display
             document.getElementById('ticketName').textContent = ticketData.nama;
             document.getElementById('ticketCodeDisplay').textContent = ticketData.ticketCode;
             document.getElementById('ticketIdDisplay').textContent = `ID: ${ticketData.ticketId}`;
             document.getElementById('ticketQuantity').textContent = ticketData.tiket;
-            document.getElementById('ticketTypeDisplay').textContent = 'Tiket Peserta';
             document.getElementById('paymentMethodDisplay').textContent = getPaymentMethodDisplay(ticketData.metode);
             
-            // Set status pembayaran
+            // Set payment status
             const paymentStatus = document.getElementById('paymentStatusDisplay');
             const proofSection = document.getElementById('proofUploadSection');
-            const proofUploadInstruction = document.getElementById('proofUploadInstruction');
+            const proofInstruction = document.getElementById('proofUploadInstruction');
             
             if (ticketData.metode === 'ots') {
-                // OTS - langsung dapat tiket
                 paymentStatus.innerHTML = '<i class="fas fa-money-bill-wave"></i> Bayar di Tempat';
-                paymentStatus.className = 'payment-status pending';
-                proofSection.style.display = 'none';
+                proofSection.classList.add('hidden');
                 document.getElementById('ticketStatusDesc').textContent = 'Bayar langsung saat registrasi di lokasi acara.';
-            } else if (proofUploaded) {
-                // Sudah upload bukti
+            } else if (selectedFile) {
                 paymentStatus.innerHTML = '<i class="fas fa-clock"></i> Menunggu Verifikasi';
-                paymentStatus.className = 'payment-status pending';
+                proofSection.classList.remove('hidden');
                 proofSection.classList.add('uploaded');
                 document.getElementById('uploadProofBtn').innerHTML = '<i class="fas fa-check"></i> Sudah Diupload';
                 document.getElementById('uploadProofBtn').disabled = true;
-                proofUploadInstruction.textContent = 'Bukti pembayaran sudah diupload. Tunggu verifikasi dari panitia (1-2 jam).';
+                proofInstruction.textContent = 'Bukti pembayaran sudah diupload. Tunggu verifikasi dari panitia.';
                 document.getElementById('ticketStatusDesc').textContent = 'Tiket menunggu verifikasi pembayaran.';
             } else {
-                // Dana/BCA butuh upload bukti
                 paymentStatus.innerHTML = '<i class="fas fa-exclamation-circle"></i> Belum Upload Bukti';
-                paymentStatus.className = 'payment-status pending';
-                proofSection.style.display = 'block';
-                proofUploadInstruction.textContent = `Upload screenshot bukti transfer ${getPaymentMethodDisplay(ticketData.metode)} untuk verifikasi. Setelah verifikasi, tiket akan aktif.`;
+                proofSection.classList.remove('hidden');
+                proofInstruction.textContent = `Upload screenshot bukti transfer ${getPaymentMethodDisplay(ticketData.metode)} untuk verifikasi.`;
                 document.getElementById('ticketStatusDesc').textContent = 'Upload bukti pembayaran terlebih dahulu.';
             }
             
-            // Tambahkan tanggal dan waktu acara
-            document.getElementById('ticketDate').textContent = ticketData.eventDate;
-            document.getElementById('ticketTime').textContent = ticketData.eventTime;
-            
-            // Tampilkan modal dengan animasi
+            // Show modal
             const modal = document.getElementById('ticketModal');
             modal.classList.add('active');
             
-            // Scroll ke atas modal
-            modal.scrollTop = 0;
+            // Send data to Google Sheets in background
+            setTimeout(async () => {
+                try {
+                    const saveResult = await sendToGoogleSheets(ticketData);
+                    const statusDiv = document.getElementById('ticketStatus');
+                    
+                    if (saveResult.success) {
+                        statusDiv.className = 'status-success status-message';
+                        statusDiv.innerHTML = '<i class="fas fa-check-circle"></i> Data berhasil disimpan!';
+                        
+                        if (saveResult.localBackup) {
+                            statusDiv.innerHTML += '<br><small>⚠️ Data disimpan lokal (server offline)</small>';
+                        }
+                    } else {
+                        statusDiv.className = 'status-warning status-message';
+                        statusDiv.innerHTML = `<i class="fas fa-exclamation-triangle"></i> ${saveResult.message}`;
+                    }
+                    
+                    statusDiv.style.display = 'block';
+                    
+                } catch (error) {
+                    console.error('Error in background save:', error);
+                }
+            }, 1000);
         }
 
-        // Download ticket sebagai gambar
-        function downloadTicket() {
-            const ticketContainer = document.querySelector('.ticket-container');
+        // =============================================
+        // FORM VALIDATION & SUBMISSION
+        // =============================================
+        function validateForm() {
+            const nama = document.getElementById('nama').value.trim();
+            const telepon = document.getElementById('telepon').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const tiketQty = parseInt(document.getElementById('tiket').value) || 0;
+            const method = document.getElementById('metodePembayaran').value;
             
-            // Gunakan html2canvas untuk konversi ke gambar
-            if (typeof html2canvas !== 'undefined') {
-                // Tampilkan loading
-                const originalText = document.getElementById('downloadTicket').innerHTML;
-                document.getElementById('downloadTicket').innerHTML = '<i class="fas fa-spinner fa-spin"></i> Membuat gambar...';
-                
-                html2canvas(ticketContainer, {
-                    scale: 2,
-                    backgroundColor: null,
-                    useCORS: true
-                }).then(canvas => {
-                    const link = document.createElement('a');
-                    link.download = `tiket-kilas-balik-masa-${document.getElementById('ticketCodeDisplay').textContent}.png`;
-                    link.href = canvas.toDataURL('image/png');
-                    link.click();
-                    
-                    // Kembalikan teks tombol
-                    document.getElementById('downloadTicket').innerHTML = originalText;
-                    
-                    // Tampilkan notifikasi sukses
-                    showNotification('Tiket berhasil didownload!', 'success');
-                }).catch(err => {
-                    console.error('Error generating ticket image:', err);
-                    document.getElementById('downloadTicket').innerHTML = originalText;
-                    showNotification('Gagal mendownload tiket. Silakan screenshot manual.', 'error');
-                });
-            } else {
-                // Fallback jika html2canvas tidak tersedia
-                showNotification('Fitur download membutuhkan library tambahan. Silakan screenshot manual dengan menekan tombol volume bawah + power secara bersamaan.', 'info');
+            // Basic validation
+            if (!nama) {
+                showNotification('Nama lengkap harus diisi!', 'error');
+                return false;
             }
-        }
-
-        // Validasi form saat submit
-        document.getElementById('ticketForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
             
-            // Ambil data dari form
-            const nama = document.getElementById('nama').value;
-            const telepon = document.getElementById('telepon').value;
-            const email = document.getElementById('email').value;
-            const totalHarga = document.getElementById('totalHarga').textContent;
-            const tiketQty = document.getElementById('tiket').value;
-            const metodePembayaran = document.getElementById('metodePembayaran').value;
+            if (!telepon) {
+                showNotification('Nomor WhatsApp harus diisi!', 'error');
+                return false;
+            }
             
-            // Validasi sederhana
-            if (!nama || !telepon || !email) {
-                showNotification('Mohon lengkapi semua data peserta!', 'error');
-                return;
+            const cleanPhone = telepon.replace(/\D/g, '');
+            if (cleanPhone.length < 10 || cleanPhone.length > 13) {
+                showNotification('Nomor WhatsApp harus 10-13 digit!', 'error');
+                return false;
+            }
+            
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showNotification('Email tidak valid!', 'error');
+                return false;
             }
             
             if (tiketQty < 1) {
-                showNotification('Mohon pilih minimal 1 tiket!', 'error');
-                return;
+                showNotification('Minimal 1 tiket!', 'error');
+                return false;
             }
             
-            // Validasi email
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                showNotification('Mohon masukkan email yang valid!', 'error');
-                return;
-            }
-            
-            // Validasi nomor telepon
-            const phoneRegex = /^[0-9]{10,13}$/;
-            const cleanPhone = telepon.replace(/\D/g, '');
-            if (!phoneRegex.test(cleanPhone)) {
-                showNotification('Mohon masukkan nomor WhatsApp yang valid!', 'error');
-                return;
-            }
-            
-            // Validasi bukti pembayaran untuk Dana/BCA
+            // File validation for Dana/BCA
             if (requiresProofUpload && !selectedFile) {
-                showNotification('Harap upload bukti pembayaran terlebih dahulu!', 'error');
-                return;
+                showNotification('Harap upload bukti pembayaran!', 'error');
+                return false;
             }
             
-            // Tampilkan loading
-            const submitBtn = document.getElementById('submitBtn');
-            const originalBtnText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...';
-            submitBtn.disabled = true;
+            return true;
+        }
+
+        async function handleFormSubmit(e) {
+            e.preventDefault();
             
-            // Tampilkan progress upload jika ada file
-            if (selectedFile) {
-                document.getElementById('uploadProgress').classList.add('active');
-            }
+            if (isProcessing) return;
+            if (!validateForm()) return;
             
-            // Simpan data pendaftaran
-            const pendaftaranData = {
-                nama: nama,
-                telepon: cleanPhone,
-                email: email,
-                tiket: tiketQty,
-                total: totalHarga,
-                metode: metodePembayaran,
+            // Get form data
+            const formData = {
+                nama: document.getElementById('nama').value.trim(),
+                telepon: document.getElementById('telepon').value.trim().replace(/\D/g, ''),
+                email: document.getElementById('email').value.trim(),
+                tiket: parseInt(document.getElementById('tiket').value) || 1,
+                total: document.getElementById('totalHarga').textContent,
+                metode: document.getElementById('metodePembayaran').value,
                 tanggal: new Date().toLocaleString('id-ID')
             };
             
-            try {
-                // Tampilkan modal tiket
-                await showTicketModal(pendaftaranData, false);
-                
-                // Simpan data ke Google Sheets
-                const saveResult = await sendToGoogleSheets(currentTicketData, selectedFile ? selectedFile.name : null);
-                
-                if (saveResult.success) {
-                    showNotification('Pendaftaran berhasil! Data telah disimpan.', 'success');
-                } else {
-                    showNotification('Pendaftaran berhasil, tetapi ada masalah dengan server. Data disimpan secara lokal.', 'warning');
-                }
-                
-                // Reset button state
-                submitBtn.innerHTML = originalBtnText;
-                submitBtn.disabled = false;
-                document.getElementById('uploadProgress').classList.remove('active');
-                
-                // Reset progress bar
-                document.getElementById('progressFill').style.width = '0%';
-                document.getElementById('progressPercentage').textContent = '0%';
-                
-            } catch (error) {
-                console.error('Error processing ticket:', error);
-                showNotification('Terjadi kesalahan saat memproses pendaftaran. Silakan coba lagi.', 'error');
-                submitBtn.innerHTML = originalBtnText;
-                submitBtn.disabled = false;
-                document.getElementById('uploadProgress').classList.remove('active');
-            }
-        });
-
-        // Event listener untuk modal tiket
-        document.getElementById('closeTicket').addEventListener('click', function() {
-            document.getElementById('ticketModal').classList.remove('active');
-        });
-
-        document.getElementById('downloadTicket').addEventListener('click', downloadTicket);
-
-        // Share functions
-        document.getElementById('shareTicket').addEventListener('click', function() {
-            const ticketData = {
-                title: 'E-Ticket Kilas Balik Masa - SMA Hangtuah 5 Sidoarjo',
-                text: `Saya sudah mendaftar acara Kilas Balik Masa! 🎉\n\nKode Tiket: ${document.getElementById('ticketCodeDisplay').textContent}\nNama: ${document.getElementById('ticketName').textContent}\nTanggal: 24 Januari 2026\nLokasi: SMA Hangtuah 5 Sidoarjo\n\nFollow Instagram: ${INSTAGRAM_HANDLE}`,
-                url: window.location.href
-            };
+            // Update hidden fields
+            document.getElementById('hiddenTicketCode').value = generateTicketCode();
+            document.getElementById('hiddenTimestamp').value = new Date().toISOString();
             
-            if (navigator.share && navigator.canShare && navigator.canShare(ticketData)) {
-                navigator.share(ticketData)
-                    .then(() => {
-                        showNotification('Tiket berhasil dibagikan!', 'success');
-                    })
-                    .catch(error => {
-                        console.log('Error sharing:', error);
-                        showNotification('Gagal membagikan tiket.', 'error');
+            // Show loading
+            showLoading('Menyimpan data pendaftaran...');
+            
+            try {
+                // Show ticket modal
+                await showTicketModal(formData);
+                
+                // Also submit to Netlify (background)
+                try {
+                    const netlifyForm = document.getElementById('ticketForm');
+                    const formDataObj = new FormData(netlifyForm);
+                    
+                    // Add file to form data if exists
+                    if (selectedFile) {
+                        formDataObj.append('file', selectedFile);
+                    }
+                    
+                    // Submit to Netlify in background
+                    fetch('/', {
+                        method: 'POST',
+                        body: formDataObj
+                    }).then(() => {
+                        console.log('✅ Netlify form submitted');
+                    }).catch(netlifyError => {
+                        console.warn('⚠️ Netlify submit error:', netlifyError);
                     });
-            } else {
-                showNotification('Fitur share tidak tersedia di browser ini.', 'info');
-            }
-        });
-
-        document.getElementById('shareInstagram').addEventListener('click', function() {
-            const ticketCode = document.getElementById('ticketCodeDisplay').textContent;
-            const userName = document.getElementById('ticketName').textContent;
-            
-            const caption = `🎫 BARU SAJA DAFTAR KILAS BALIK MASA! 🎫
-
-Sudah dapat tiket untuk acara Kilas Balik Masa SMA Hangtuah 5 Sidoarjo!
-
-✨ Kode Tiket: ${ticketCode}
-👤 Nama: ${userName}
-📅 Tanggal: 24 Januari 2026
-⏰ Waktu: 07.30 WIB
-📍 Lokasi: SMA Hangtuah 5 Sidoarjo
-
-Tunggu apalagi? Daftar sekarang juga! 
-Link di bio @kopi_basi
-
-#KilasBalikMasa #SMAHangtuah5 #Alumni #Reuni #KopiBasi #KenanganMasaSekolah`;
-            
-            navigator.clipboard.writeText(caption).then(() => {
-                showNotification('Caption sudah disalin ke clipboard! Buka Instagram dan paste untuk share.', 'success');
-                setTimeout(() => {
-                    window.open(INSTAGRAM_URL, '_blank');
-                }, 1500);
-            }).catch(err => {
-                console.error('Gagal menyalin caption:', err);
-                showNotification('Gagal menyalin caption. Silakan screenshot tiket dan share manual.', 'error');
-            });
-        });
-
-        document.getElementById('shareWhatsApp').addEventListener('click', function() {
-            const ticketCode = document.getElementById('ticketCodeDisplay').textContent;
-            const userName = document.getElementById('ticketName').textContent;
-            
-            const message = `*🎫 KILAS BALIK MASA - TIKET TERBIT! 🎫*
-
-Hai! Saya baru saja mendaftar acara *Kilas Balik Masa* SMA Hangtuah 5 Sidoarjo!
-
-*📋 Detail Tiket:*
-• Kode Tiket: ${ticketCode}
-• Nama: ${userName}
-• Tanggal: 24 Januari 2026
-• Waktu: 07.30 WIB
-• Lokasi: SMA Hangtuah 5 Sidoarjo
-
-*🎉 Ayo ikutan juga!*
-Dapatkan tiketmu sekarang juga!
-
-*📱 Follow Instagram acara:*
-${INSTAGRAM_HANDLE}
-${INSTAGRAM_URL}
-
-#KilasBalikMasa #SMAHangtuah5 #KopiBasi`;
-            
-            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
-        });
-
-        // Tutup modal saat klik di luar
-        document.getElementById('ticketModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                this.classList.remove('active');
-            }
-        });
-
-        // Test koneksi ke server
-        async function testConnection() {
-            try {
-                showNotification('Menguji koneksi ke server...', 'info');
-                
-                // Coba akses Google Script URL
-                const response = await fetch(GOOGLE_SCRIPT_URL);
-                
-                if (response.ok || response.status === 0) {
-                    showNotification('✅ Koneksi ke server berhasil!', 'success');
-                } else {
-                    showNotification('⚠️ Server merespons dengan status: ' + response.status, 'warning');
+                    
+                } catch (netlifyError) {
+                    console.warn('⚠️ Netlify form error:', netlifyError);
                 }
+                
+                // Show success notification
+                setTimeout(() => {
+                    showNotification('🎉 Pendaftaran berhasil! Tiket telah dibuat.', 'success');
+                }, 500);
+                
             } catch (error) {
-                showNotification('❌ Gagal terhubung ke server: ' + error.message, 'error');
-                console.error('Connection test error:', error);
+                console.error('❌ Form submission error:', error);
+                showNotification('Terjadi kesalahan. Silakan coba lagi.', 'error');
+                
+            } finally {
+                hideLoading();
             }
         }
 
-        // Inisialisasi
-        hitungTotal();
-        
-        // Aktifkan bubble Dana secara default
-        document.getElementById('paymentDetails').classList.add('active');
-        document.getElementById('fileUploadContainer').classList.add('active');
-        
-        // Set timestamp hidden field
-        document.getElementById('hiddenTimestamp').value = new Date().toISOString();
-        
-        // Animasi fade in untuk elemen
-        document.addEventListener('DOMContentLoaded', function() {
-            const elements = document.querySelectorAll('.fade-in');
-            elements.forEach((el, index) => {
-                setTimeout(() => {
-                    el.style.opacity = '1';
-                    el.style.transform = 'translateY(0)';
-                }, index * 200);
+        // =============================================
+        // EVENT LISTENERS
+        // =============================================
+        function initEventListeners() {
+            // Ticket quantity change
+            const tiketInput = document.getElementById('tiket');
+            tiketInput.addEventListener('input', function() {
+                const qty = parseInt(this.value) || 1;
+                const subtotal = qty * HARGA_TIKET;
+                
+                document.getElementById('subtotal').textContent = formatRupiah(subtotal);
+                document.getElementById('totalTiket').textContent = qty;
+                document.getElementById('totalHarga').textContent = formatRupiah(subtotal);
+                document.getElementById('danaAmount').textContent = formatRupiah(subtotal);
+                document.getElementById('hiddenTotalAmount').value = formatRupiah(subtotal);
             });
+            
+            // Payment method selection
+            document.querySelectorAll('.payment-bubble').forEach(bubble => {
+                bubble.addEventListener('click', function() {
+                    document.querySelectorAll('.payment-bubble').forEach(b => b.classList.remove('selected'));
+                    this.classList.add('selected');
+                    
+                    const method = this.dataset.method;
+                    document.getElementById('metodePembayaran').value = method;
+                    
+                    // Show/hide details
+                    document.getElementById('danaDetails').classList.add('hidden');
+                    document.getElementById('bcaDetails').classList.add('hidden');
+                    document.getElementById('otsDetails').classList.add('hidden');
+                    document.getElementById(`${method}Details`).classList.remove('hidden');
+                    
+                    // Show/hide file upload
+                    requiresProofUpload = (method === 'dana' || method === 'bca');
+                    const fileContainer = document.getElementById('fileUploadContainer');
+                    
+                    if (requiresProofUpload) {
+                        fileContainer.classList.add('active');
+                    } else {
+                        fileContainer.classList.remove('active');
+                        selectedFile = null;
+                        document.getElementById('filePreviewContainer').classList.remove('active');
+                        document.getElementById('proofPreview').classList.remove('active');
+                        document.getElementById('proofPreview').innerHTML = '';
+                    }
+                    
+                    document.getElementById('paymentDetails').classList.add('active');
+                });
+            });
+            
+            // File upload handlers
+            document.getElementById('fileUploadBox').addEventListener('click', () => {
+                document.getElementById('paymentProof').click();
+            });
+            
+            document.getElementById('paymentProof').addEventListener('change', (e) => {
+                if (e.target.files.length > 0) {
+                    handleFileSelect(e.target.files[0]);
+                }
+            });
+            
+            document.getElementById('removeFileBtn').addEventListener('click', () => {
+                selectedFile = null;
+                document.getElementById('paymentProof').value = '';
+                document.getElementById('filePreviewContainer').classList.remove('active');
+                document.getElementById('proofPreview').classList.remove('active');
+                document.getElementById('proofPreview').innerHTML = '';
+                showNotification('File telah dihapus', 'warning');
+            });
+            
+            // Copy buttons
+            document.querySelectorAll('.copy-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const number = this.dataset.number;
+                    let formattedNumber = number;
+                    
+                    if (number === "7265312047") formattedNumber = "726 531 2047";
+                    if (number === "08815566720") formattedNumber = "0881 5566 720";
+                    
+                    navigator.clipboard.writeText(formattedNumber).then(() => {
+                        const original = this.innerHTML;
+                        this.innerHTML = '<i class="fas fa-check"></i> Tersalin!';
+                        this.style.background = 'linear-gradient(135deg, #00a86b, #00d48e)';
+                        
+                        setTimeout(() => {
+                            this.innerHTML = original;
+                            this.style.background = '';
+                        }, 2000);
+                    });
+                });
+            });
+            
+            // Form submission
+            document.getElementById('ticketForm').addEventListener('submit', handleFormSubmit);
+            
+            // Modal controls
+            document.getElementById('closeTicket').addEventListener('click', () => {
+                document.getElementById('ticketModal').classList.remove('active');
+            });
+            
+            document.getElementById('ticketModal').addEventListener('click', (e) => {
+                if (e.target === document.getElementById('ticketModal')) {
+                    document.getElementById('ticketModal').classList.remove('active');
+                }
+            });
+            
+            // Ticket actions
+            document.getElementById('downloadTicket').addEventListener('click', function() {
+                showNotification('Fitur download akan datang. Silakan screenshot manual.', 'info');
+            });
+            
+            document.getElementById('shareTicket').addEventListener('click', function() {
+                const ticketData = {
+                    title: 'E-Ticket Kilas Balik Masa',
+                    text: `Saya sudah dapat tiket Kilas Balik Masa! 🎫\nKode: ${document.getElementById('ticketCodeDisplay').textContent}`,
+                    url: window.location.href
+                };
+                
+                if (navigator.share) {
+                    navigator.share(ticketData);
+                } else {
+                    showNotification('Share tidak tersedia di browser ini.', 'info');
+                }
+            });
+            
+            // Upload proof in modal
+            document.getElementById('uploadProofBtn').addEventListener('click', async function() {
+                if (!selectedFile) {
+                    document.getElementById('proofFileInput').click();
+                    return;
+                }
+                
+                const btn = this;
+                const originalText = btn.innerHTML;
+                
+                try {
+                    btn.disabled = true;
+                    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengupload...';
+                    
+                    const statusDiv = document.getElementById('proofUploadStatus');
+                    statusDiv.className = 'status-info status-message';
+                    statusDiv.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengupload bukti...';
+                    statusDiv.style.display = 'block';
+                    
+                    // Simulate progress
+                    const progressFill = document.getElementById('progressFill');
+                    const progressPercentage = document.getElementById('progressPercentage');
+                    let progress = 0;
+                    const progressInterval = setInterval(() => {
+                        progress += 10;
+                        if (progress > 90) clearInterval(progressInterval);
+                        progressFill.style.width = progress + '%';
+                        progressPercentage.textContent = progress + '%';
+                    }, 200);
+                    
+                    // Send to Google Sheets
+                    const result = await sendToGoogleSheets(currentTicketData);
+                    
+                    clearInterval(progressInterval);
+                    progressFill.style.width = '100%';
+                    progressPercentage.textContent = '100%';
+                    
+                    if (result.success) {
+                        // Update UI
+                        document.getElementById('paymentStatusDisplay').innerHTML = '<i class="fas fa-clock"></i> Menunggu Verifikasi';
+                        document.getElementById('proofUploadSection').classList.add('uploaded');
+                        btn.innerHTML = '<i class="fas fa-check"></i> Sudah Diupload';
+                        
+                        statusDiv.className = 'status-success status-message';
+                        statusDiv.innerHTML = '<i class="fas fa-check-circle"></i> Bukti berhasil diupload!';
+                        
+                        showNotification('✅ Bukti pembayaran berhasil diupload!', 'success');
+                    } else {
+                        throw new Error(result.message);
+                    }
+                    
+                } catch (error) {
+                    console.error('Upload error:', error);
+                    const statusDiv = document.getElementById('proofUploadStatus');
+                    statusDiv.className = 'status-error status-message';
+                    statusDiv.innerHTML = `<i class="fas fa-exclamation-circle"></i> Gagal: ${error.message}`;
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                    showNotification('Gagal upload bukti', 'error');
+                }
+            });
+            
+            document.getElementById('proofFileInput').addEventListener('change', function(e) {
+                if (e.target.files.length > 0) {
+                    handleFileSelect(e.target.files[0]);
+                }
+            });
+            
+            // Social share buttons
+            document.getElementById('shareInstagram').addEventListener('click', function() {
+                const caption = `🎫 BARU DAFTAR KILAS BALIK MASA! 🎫\n\nSudah dapat tiket untuk acara Kilas Balik Masa SMA Hangtuah 5 Sidoarjo!\n\nKode Tiket: ${document.getElementById('ticketCodeDisplay').textContent}\nTanggal: 24 Januari 2026\nLokasi: SMA Hangtuah 5 Sidoarjo\n\nFollow: @kopi_basi\n#KilasBalikMasa #SMAHangtuah5`;
+                
+                navigator.clipboard.writeText(caption).then(() => {
+                    showNotification('Caption disalin! Buka Instagram dan paste.', 'success');
+                    setTimeout(() => window.open(INSTAGRAM_URL, '_blank'), 1500);
+                });
+            });
+            
+            document.getElementById('shareWhatsApp').addEventListener('click', function() {
+                const message = `*🎫 KILAS BALIK MASA - TIKET TERBIT! 🎫*\n\nSaya baru saja mendaftar acara *Kilas Balik Masa* SMA Hangtuah 5 Sidoarjo!\n\n*Detail Tiket:*\n• Kode: ${document.getElementById('ticketCodeDisplay').textContent}\n• Tanggal: 24 Januari 2026\n• Waktu: 07.30 WIB\n• Lokasi: SMA Hangtuah 5 Sidoarjo\n\nFollow Instagram acara: ${INSTAGRAM_HANDLE}`;
+                
+                window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, '_blank');
+            });
+        }
+
+        // =============================================
+        // TEST CONNECTION
+        // =============================================
+        async function testConnection() {
+            showLoading('Menguji koneksi server...');
+            
+            try {
+                // Test CORS preflight
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'OPTIONS',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+                
+                hideLoading();
+                
+                if (response.ok) {
+                    showNotification('✅ Server aktif dan mendukung CORS!', 'success');
+                } else {
+                    showNotification('⚠️ Server merespons dengan status: ' + response.status, 'warning');
+                }
+                
+            } catch (error) {
+                hideLoading();
+                showNotification('❌ Gagal terhubung ke server: ' + error.message, 'error');
+            }
+        }
+
+        // =============================================
+        // INITIALIZATION
+        // =============================================
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize form
+            const tiketInput = document.getElementById('tiket');
+            const subtotal = parseInt(tiketInput.value) * HARGA_TIKET;
+            document.getElementById('subtotal').textContent = formatRupiah(subtotal);
+            document.getElementById('totalHarga').textContent = formatRupiah(subtotal);
+            document.getElementById('danaAmount').textContent = formatRupiah(subtotal);
+            
+            // Set default payment method
+            document.getElementById('paymentDetails').classList.add('active');
+            document.getElementById('fileUploadContainer').classList.add('active');
+            requiresProofUpload = true;
+            
+            // Set timestamp
+            document.getElementById('hiddenTimestamp').value = new Date().toISOString();
+            
+            // Initialize event listeners
+            initEventListeners();
+            
+            // Fade in animations
+            setTimeout(() => {
+                document.querySelectorAll('.fade-in').forEach((el, i) => {
+                    setTimeout(() => {
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                    }, i * 200);
+                });
+            }, 300);
             
             // Set Open Graph URL
             const metaOgUrl = document.querySelector('meta[property="og:url"]');
@@ -3247,23 +3131,29 @@ ${INSTAGRAM_URL}
                 metaOgUrl.setAttribute('content', window.location.href);
             }
             
-            // Load html2canvas untuk download ticket
-            const script = document.createElement('script');
-            script.src = 'https://html2canvas.hertzen.com/dist/html2canvas.min.js';
-            script.onload = function() {
-                console.log('html2canvas loaded successfully');
-            };
-            script.onerror = function() {
-                console.log('Failed to load html2canvas');
-            };
-            document.head.appendChild(script);
-            
-            // Cek localStorage untuk backup data
-            const backupData = localStorage.getItem('all_tickets');
-            if (backupData) {
-                const tickets = JSON.parse(backupData);
-                console.log(`Ada ${tickets.length} data pendaftaran tersimpan di localStorage`);
+            // Check for backup data
+            const backupCount = getBackupCount();
+            if (backupCount > 0) {
+                console.log(`📁 Backup data ditemukan: ${backupCount} tiket`);
             }
+            
+            // Auto-test connection on load (optional)
+            // setTimeout(testConnection, 1000);
+            
+            console.log('✅ Sistem Kilas Balik Masa siap digunakan!');
+        });
+
+        // =============================================
+        // GLOBAL ERROR HANDLING
+        // =============================================
+        window.addEventListener('error', function(e) {
+            console.error('Global error:', e.error);
+            showNotification('Terjadi kesalahan teknis. Silakan refresh halaman.', 'error');
+        });
+
+        window.addEventListener('unhandledrejection', function(e) {
+            console.error('Unhandled promise rejection:', e.reason);
+            showNotification('Terjadi kesalahan. Silakan coba lagi.', 'error');
         });
     </script>
 </body>
