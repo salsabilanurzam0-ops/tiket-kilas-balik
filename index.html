@@ -10,8 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Library QR Code -->
-    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
     <!-- Open Graph untuk social media -->
     <meta property="og:title" content="KILAS BALIK MASA - SMA Hangtuah 5 Sidoarjo">
     <meta property="og:description" content="Menguak Kenangan, Menyusuri Lorong Waktu - Sabtu, 24 Januari 2026">
@@ -522,6 +520,208 @@
             font-size: 0.95rem;
         }
 
+        /* File Upload Styling - BARU */
+        .file-upload-container {
+            background: rgba(34, 34, 34, 0.9);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 2px solid #d4af37;
+            display: none;
+        }
+
+        .file-upload-container.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .file-upload-label {
+            display: block;
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: #ffcc80;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .file-upload-box {
+            border: 3px dashed #d4af37;
+            border-radius: 10px;
+            padding: 30px 20px;
+            text-align: center;
+            background: rgba(212, 175, 55, 0.05);
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 20px;
+        }
+
+        .file-upload-box:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: #ffcc80;
+        }
+
+        .file-upload-box i {
+            font-size: 3rem;
+            color: #d4af37;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .file-upload-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .file-upload-subtext {
+            font-family: 'Poppins', sans-serif;
+            color: #b0b0b0;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+
+        .file-upload-btn {
+            background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+            color: #000;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+            border: 2px solid #ffcc80;
+        }
+
+        .file-upload-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        #fileInput {
+            display: none;
+        }
+
+        .file-preview-container {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(17, 17, 17, 0.8);
+            border-radius: 10px;
+            border: 2px solid #d4af37;
+        }
+
+        .file-preview-container.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .file-preview {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .file-preview-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(212, 175, 55, 0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #d4af37;
+            flex-shrink: 0;
+        }
+
+        .file-preview-info {
+            flex: 1;
+        }
+
+        .file-preview-name {
+            font-family: 'Montserrat', sans-serif;
+            color: #fff;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 5px;
+            word-break: break-all;
+        }
+
+        .file-preview-size {
+            font-family: 'Poppins', sans-serif;
+            color: #b0b0b0;
+            font-size: 0.85rem;
+        }
+
+        .file-remove-btn {
+            background: rgba(255, 82, 82, 0.2);
+            color: #ff8a8a;
+            border: 1px solid #ff5252;
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .file-remove-btn:hover {
+            background: rgba(255, 82, 82, 0.3);
+        }
+
+        /* Upload Progress - BARU */
+        .upload-progress {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(17, 17, 17, 0.8);
+            border-radius: 10px;
+            border: 2px solid #d4af37;
+            text-align: center;
+        }
+
+        .upload-progress.active {
+            display: block;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background: rgba(212, 175, 55, 0.2);
+            border-radius: 5px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #d4af37, #ffcc80);
+            border-radius: 5px;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            font-family: 'Montserrat', sans-serif;
+            color: #ffcc80;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
         /* Ticket Table */
         .ticket-table {
             width: 100%;
@@ -805,7 +1005,7 @@
             top: -2px;
         }
 
-        /* OTS Details - DIUPDATE JAMNYA */
+        /* OTS Details dengan Jam Updated */
         .ots-details {
             text-align: center;
             padding: 15px;
@@ -1197,6 +1397,30 @@
             margin: 15px 0;
         }
 
+        .payment-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        .payment-status.pending {
+            background: rgba(255, 193, 7, 0.2);
+            color: #ffc107;
+            border: 1px solid #ffc107;
+        }
+
+        .payment-status.verified {
+            background: rgba(40, 167, 69, 0.2);
+            color: #28a745;
+            border: 1px solid #28a745;
+        }
+
         /* Ticket Type Display - BARU */
         .ticket-type-display {
             background: rgba(30, 30, 30, 0.8);
@@ -1288,6 +1512,97 @@
             font-size: 0.9rem;
             color: #b0b0b0;
             letter-spacing: 1px;
+        }
+
+        /* Upload Proof Section di Tiket - BARU */
+        .proof-upload-section {
+            background: rgba(212, 175, 55, 0.1);
+            border: 2px dashed #d4af37;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .proof-upload-section.uploaded {
+            background: rgba(40, 167, 69, 0.1);
+            border: 2px solid #28a745;
+        }
+
+        .proof-upload-title {
+            font-family: 'Montserrat', sans-serif;
+            color: #ffcc80;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .proof-upload-instruction {
+            font-family: 'Poppins', sans-serif;
+            color: #b0b0b0;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .proof-preview {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            border: 1px solid #d4af37;
+        }
+
+        .proof-preview.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .proof-preview img {
+            max-width: 100%;
+            max-height: 200px;
+            border-radius: 8px;
+            border: 2px solid #d4af37;
+        }
+
+        .proof-upload-btn {
+            background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+            color: #000;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+            border: 2px solid #ffcc80;
+        }
+
+        .proof-upload-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .proof-upload-btn:disabled {
+            background: #333;
+            color: #888;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+            border-color: #333;
         }
 
         /* Ticket Footer dengan Social Share */
@@ -1463,9 +1778,9 @@
 
         /* Status Messages */
         .status-success {
-            background: rgba(212, 175, 55, 0.2);
-            border: 1px solid #d4af37;
-            color: #ffcc80;
+            background: rgba(40, 167, 69, 0.2);
+            border: 1px solid #28a745;
+            color: #28a745;
             padding: 10px;
             border-radius: 5px;
             margin: 10px 0;
@@ -1476,6 +1791,16 @@
             background: rgba(255, 82, 82, 0.2);
             border: 1px solid #ff5252;
             color: #ff8a8a;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .status-warning {
+            background: rgba(255, 193, 7, 0.2);
+            border: 1px solid #ffc107;
+            color: #ffc107;
             padding: 10px;
             border-radius: 5px;
             margin: 10px 0;
@@ -1513,7 +1838,7 @@
         }
 
         /* Touch-friendly tap targets */
-        .btn-submit, .btn-ticket, .payment-bubble, .copy-btn {
+        .btn-submit, .btn-ticket, .payment-bubble, .copy-btn, .file-upload-btn, .proof-upload-btn {
             min-height: 44px;
         }
 
@@ -1682,19 +2007,40 @@
                         <i class="fas fa-credit-card"></i> METODE PEMBAYARAN
                     </div>
                     <div class="payment-method-details large" id="paymentMethodDisplay">Dana</div>
-                    <div class="payment-method-details" id="paymentDetailsDisplay">
-                        <i class="fas fa-check-circle" style="color: #d4af37;"></i> Pembayaran berhasil
+                    <div class="payment-status pending" id="paymentStatusDisplay">
+                        <i class="fas fa-clock"></i> Menunggu Upload Bukti
                     </div>
                 </div>
                 
-                <!-- Ticket ID Display - BARU (Menggantikan QR Code) -->
-                <div class="ticket-id-display-section">
+                <!-- Upload Proof Section - BARU (hanya untuk Dana & BCA) -->
+                <div class="proof-upload-section" id="proofUploadSection">
+                    <div class="proof-upload-title">
+                        <i class="fas fa-file-upload"></i> UPLOAD BUKTI PEMBAYARAN
+                    </div>
+                    <div class="proof-upload-instruction" id="proofUploadInstruction">
+                        Upload screenshot bukti transfer Dana/Bank untuk verifikasi. Setelah verifikasi, tiket akan aktif.
+                    </div>
+                    
+                    <div class="proof-preview" id="proofPreview">
+                        <!-- Preview gambar akan ditampilkan di sini -->
+                    </div>
+                    
+                    <input type="file" id="proofFileInput" accept="image/*" style="display: none;">
+                    <button class="proof-upload-btn" id="uploadProofBtn">
+                        <i class="fas fa-cloud-upload-alt"></i> Upload Bukti
+                    </button>
+                    
+                    <div id="proofUploadStatus" style="display: none;"></div>
+                </div>
+                
+                <!-- Ticket ID Display - BARU (menggantikan QR Code) -->
+                <div class="ticket-id-display-section" id="ticketIdSection">
                     <div class="payment-method-title">
                         <i class="fas fa-hashtag"></i> KODE TIKET
                     </div>
                     <div class="ticket-code-display" id="ticketCodeDisplay">KBM-0001</div>
                     <div class="ticket-id-display" id="ticketIdDisplay">ID: KBM2026-0001</div>
-                    <div class="ticket-type-desc">
+                    <div class="ticket-type-desc" id="ticketStatusDesc">
                         Tunjukkan kode tiket ini saat registrasi di lokasi acara
                     </div>
                 </div>
@@ -1724,10 +2070,10 @@
                 
                 <div class="ticket-instruction">
                     <h6><i class="fas fa-info-circle"></i> INSTRUKSI PENGGUNAAN:</h6>
-                    <p>1. Simpan screenshot tiket ini atau download sebagai gambar<br>
-                       2. Tunjukkan kode tiket saat registrasi di lokasi acara<br>
-                       3. Datang 15 menit sebelum acara dimulai<br>
-                       4. Bawa bukti pembayaran jika diperlukan</p>
+                    <p>1. Upload bukti pembayaran untuk Dana/Transfer Bank<br>
+                       2. Tunggu verifikasi dari panitia (1-2 jam)<br>
+                       3. Tiket akan aktif setelah pembayaran diverifikasi<br>
+                       4. Tunjukkan kode tiket saat registrasi di lokasi</p>
                 </div>
                 
                 <div class="ticket-actions">
@@ -1832,7 +2178,7 @@
                         <div class="form-group">
                             <label for="email" class="required">Email Aktif</label>
                             <input type="email" id="email" class="form-control" required placeholder="nama@email.com">
-                            <small style="color: #888; font-size: 0.85rem; margin-top: 5px; display: block;">*Untuk keterangan transfer</small>
+                            <small style="color: #888; font-size: 0.85rem; margin-top: 5px; display: block;">*Untuk konfirmasi dan bukti pembayaran</small>
                         </div>
                     </div>
                 </div>
@@ -1932,7 +2278,8 @@
                                 <strong>Instruksi:</strong><br>
                                 1. Transfer ke nomor Dana di atas<br>
                                 2. Jumlah: <span id="danaAmount">Rp 10.000</span><br>
-                                3. Konfirmasi via WhatsApp ke 08815566720
+                                3. Screenshot bukti transfer untuk upload<br>
+                                4. Konfirmasi via WhatsApp ke 08815566720
                             </div>
                         </div>
                         
@@ -1952,7 +2299,8 @@
                                     <li>Contoh: "Budi Santoso - budi@gmail.com"</li>
                                 </ul>
                                 <p style="color: #ffcc80; margin-top: 10px; font-size: 0.85rem;">
-                                    *Transfer tanpa keterangan nama & email tidak bisa diproses
+                                    *Transfer tanpa keterangan nama & email tidak bisa diproses<br>
+                                    *Screenshot bukti transfer untuk upload
                                 </p>
                             </div>
                         </div>
@@ -1981,10 +2329,64 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- File Upload Section - BARU -->
+                    <div class="file-upload-container" id="fileUploadContainer">
+                        <label class="file-upload-label">
+                            <i class="fas fa-file-upload"></i> UPLOAD BUKTI PEMBAYARAN
+                        </label>
+                        
+                        <div class="file-upload-box" id="fileUploadBox">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <div class="file-upload-text">Klik untuk Upload Bukti</div>
+                            <div class="file-upload-subtext">Format: JPG, PNG (Maks: 5MB)</div>
+                            <button type="button" class="file-upload-btn">
+                                <i class="fas fa-upload"></i> Pilih File
+                            </button>
+                        </div>
+                        
+                        <input type="file" id="paymentProof" accept="image/*" style="display: none;">
+                        
+                        <div class="file-preview-container" id="filePreviewContainer">
+                            <div class="file-preview">
+                                <div class="file-preview-icon">
+                                    <i class="fas fa-file-image"></i>
+                                </div>
+                                <div class="file-preview-info">
+                                    <div class="file-preview-name" id="fileName">bukti-transfer.jpg</div>
+                                    <div class="file-preview-size" id="fileSize">1.2 MB</div>
+                                </div>
+                                <button type="button" class="file-remove-btn" id="removeFileBtn">
+                                    <i class="fas fa-trash"></i> Hapus
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="upload-progress" id="uploadProgress">
+                            <div class="progress-text">
+                                <i class="fas fa-spinner fa-spin"></i> Mengupload bukti pembayaran...
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="progressFill"></div>
+                            </div>
+                            <div class="progress-text" id="progressPercentage">0%</div>
+                        </div>
+                        
+                        <div class="transfer-note">
+                            <h6>📸 INSTRUKSI UPLOAD:</h6>
+                            <ul>
+                                <li>Pastikan screenshot bukti transfer JELAS terbaca</li>
+                                <li>Format foto: JPG/PNG (rekomendasi: screenshot)</li>
+                                <li>Ukuran maksimal 5MB</li>
+                                <li>Pastikan nominal, nama pengirim, dan waktu transfer terlihat</li>
+                                <li>Untuk BCA: pastikan keterangan nama & email terlihat</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Submit Button -->
-                <button type="submit" class="btn-submit">
+                <button type="submit" class="btn-submit" id="submitBtn">
                     <i class="fas fa-paper-plane"></i> Daftar Sekarang
                 </button>
             </form>
@@ -2014,10 +2416,10 @@
 
     <script>
         // =============================================
-        // KONFIGURASI GOOGLE SHEETS
+        // KONFIGURASI GOOGLE SHEETS & UPLOAD
         // =============================================
-        // Ganti dengan URL Web App Anda
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxYO3fX5YHp1tA8Cq9mV0g93KdzKdS-7Q9h7n6N8d8_9O0lN1A/exec';
+        // URL YANG BENAR - SUDAH DIGANTI ↓↓↓
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxH2jSsRE3dPT9VvBhVRdlZsRWqHaJBeR9vb-z1sUZV5dLpWg-ZftlKfWOjEIifIbng/exec';
         
         // Instagram Account
         const INSTAGRAM_HANDLE = '@kopi_basi';
@@ -2025,6 +2427,11 @@
         
         // Harga tiket
         const hargaTiket = 10000;
+
+        // Variabel global
+        let selectedFile = null;
+        let currentTicketData = null;
+        let requiresProofUpload = false;
 
         // Format mata uang Rupiah
         function formatRupiah(angka) {
@@ -2054,15 +2461,98 @@
         // Get payment method display name
         function getPaymentMethodDisplay(method) {
             switch(method) {
-                case 'dana': return 'Dana (E-Wallet)';
+                case 'dana': return 'Dana';
                 case 'bca': return 'Transfer Bank BCA';
                 case 'ots': return 'Bayar di Tempat (Cash)';
-                default: return 'Dana (E-Wallet)';
+                default: return 'Dana';
             }
         }
 
+        // Check if payment method requires proof upload
+        function requiresProofUploadMethod(method) {
+            return method === 'dana' || method === 'bca';
+        }
+
+        // Upload file ke server
+        async function uploadPaymentProof(file, ticketCode) {
+            return new Promise((resolve, reject) => {
+                try {
+                    const reader = new FileReader();
+                    
+                    reader.onload = async function(e) {
+                        try {
+                            // Tampilkan progress upload
+                            const progressFill = document.getElementById('progressFill');
+                            const progressPercentage = document.getElementById('progressPercentage');
+                            
+                            // Simulasi progress
+                            let progress = 0;
+                            const progressInterval = setInterval(() => {
+                                progress += 10;
+                                if (progress > 90) {
+                                    clearInterval(progressInterval);
+                                }
+                                progressFill.style.width = progress + '%';
+                                progressPercentage.textContent = progress + '%';
+                            }, 200);
+                            
+                            // Siapkan data untuk upload
+                            const formData = new FormData();
+                            formData.append('action', 'upload_proof');
+                            formData.append('ticketCode', ticketCode);
+                            formData.append('fileName', file.name);
+                            formData.append('fileType', file.type);
+                            formData.append('fileSize', file.size);
+                            formData.append('file', file);
+                            formData.append('timestamp', new Date().toISOString());
+                            
+                            // Kirim ke Google Apps Script
+                            const response = await fetch(GOOGLE_SCRIPT_URL, {
+                                method: 'POST',
+                                body: formData
+                            });
+                            
+                            clearInterval(progressInterval);
+                            progressFill.style.width = '100%';
+                            progressPercentage.textContent = '100%';
+                            
+                            // Tunggu sebentar untuk efek
+                            setTimeout(() => {
+                                resolve({
+                                    success: true,
+                                    message: 'Bukti pembayaran berhasil diupload!',
+                                    fileName: file.name
+                                });
+                            }, 500);
+                            
+                        } catch (error) {
+                            reject({
+                                success: false,
+                                message: 'Error saat upload: ' + error.message
+                            });
+                        }
+                    };
+                    
+                    reader.onerror = function() {
+                        reject({
+                            success: false,
+                            message: 'Gagal membaca file'
+                        });
+                    };
+                    
+                    reader.readAsDataURL(file);
+                    
+                } catch (error) {
+                    reject({
+                        success: false,
+                        message: 'Error: ' + error.message
+                    });
+                }
+            });
+        }
+
         // Kirim data ke Google Sheets
-        async function sendToGoogleSheets(data) {
+        async function sendToGoogleSheets(data, proofFileName = null) {
             try {
                 // Tampilkan loading
                 const statusDiv = document.getElementById('ticketStatus');
@@ -2070,154 +2560,62 @@
                 statusDiv.className = '';
                 statusDiv.style.display = 'block';
                 
+                // Tambahkan proof filename jika ada
+                const sheetData = {
+                    ...data,
+                    proofFile: proofFileName || 'none',
+                    status: proofFileName ? 'pending_verification' : (data.metode === 'ots' ? 'pending_ots' : 'pending_payment')
+                };
+                
                 // Kirim data ke Google Sheets
                 const response = await fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
-                    mode: 'no-cors', // Important for Google Apps Script
+                    mode: 'no-cors',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify(data)
+                    body: JSON.stringify(sheetData)
                 });
                 
                 // Karena menggunakan no-cors, kita tidak bisa membaca response
-                // Tapi kita anggap berhasil jika tidak ada error
                 statusDiv.innerHTML = '<div class="status-success"><i class="fas fa-check-circle"></i> Data berhasil disimpan ke sistem!</div>';
                 
-                return true;
+                return {
+                    success: true,
+                    message: 'Data berhasil disimpan'
+                };
+                
             } catch (error) {
                 console.error('Error sending to Google Sheets:', error);
                 const statusDiv = document.getElementById('ticketStatus');
                 statusDiv.innerHTML = '<div class="status-error"><i class="fas fa-exclamation-circle"></i> Gagal menyimpan data ke server, tetapi tiket tetap valid secara lokal.</div>';
-                return false;
+                
+                return {
+                    success: false,
+                    message: 'Gagal menyimpan ke server'
+                };
             }
         }
 
         // Simpan ke localStorage sebagai backup
-        function saveToLocalStorage(data) {
+        function saveToLocalStorage(data, proofFileName = null) {
             try {
+                const ticketData = {
+                    ...data,
+                    proofFile: proofFileName,
+                    storedAt: new Date().toISOString()
+                };
+                
                 const allTickets = JSON.parse(localStorage.getItem('all_tickets')) || [];
-                allTickets.push(data);
+                allTickets.push(ticketData);
                 localStorage.setItem('all_tickets', JSON.stringify(allTickets));
-                localStorage.setItem(`ticket_${data.ticketCode}`, JSON.stringify(data));
+                localStorage.setItem(`ticket_${data.ticketCode}`, JSON.stringify(ticketData));
+                
                 return true;
             } catch (error) {
                 console.error('Error saving to localStorage:', error);
                 return false;
             }
-        }
-
-        // Share to Instagram
-        function shareToInstagram() {
-            const ticketCode = document.getElementById('ticketCodeDisplay').textContent;
-            const userName = document.getElementById('ticketName').textContent;
-            
-            // Text untuk Instagram
-            const caption = `🎫 BARU SAJA DAFTAR KILAS BALIK MASA! 🎫
-
-Sudah dapat tiket untuk acara Kilas Balik Masa SMA Hangtuah 5 Sidoarjo!
-
-✨ Kode Tiket: ${ticketCode}
-👤 Nama: ${userName}
-📅 Tanggal: 24 Januari 2026
-⏰ Waktu: 07.30 WIB
-📍 Lokasi: SMA Hangtuah 5 Sidoarjo
-
-Tunggu apalagi? Daftar sekarang juga! 
-Link di bio @kopi_basi
-
-#KilasBalikMasa #SMAHangtuah5 #Alumni #Reuni #KopiBasi #KenanganMasaSekolah`;
-            
-            // Fallback untuk copy ke clipboard
-            navigator.clipboard.writeText(caption).then(() => {
-                showNotification('Caption sudah disalin ke clipboard! Buka Instagram dan paste untuk share.', 'success');
-                
-                // Buka Instagram
-                setTimeout(() => {
-                    window.open(INSTAGRAM_URL, '_blank');
-                }, 1500);
-            }).catch(err => {
-                console.error('Gagal menyalin caption:', err);
-                showNotification('Gagal menyalin caption. Silakan screenshot tiket dan share manual.', 'error');
-            });
-        }
-
-        // Share to WhatsApp
-        function shareToWhatsApp() {
-            const ticketCode = document.getElementById('ticketCodeDisplay').textContent;
-            const userName = document.getElementById('ticketName').textContent;
-            
-            const message = `*🎫 KILAS BALIK MASA - TIKET TERBIT! 🎫*
-
-Hai! Saya baru saja mendaftar acara *Kilas Balik Masa* SMA Hangtuah 5 Sidoarjo!
-
-*📋 Detail Tiket:*
-• Kode Tiket: ${ticketCode}
-• Nama: ${userName}
-• Tanggal: 24 Januari 2026
-• Waktu: 07.30 WIB
-• Lokasi: SMA Hangtuah 5 Sidoarjo
-
-*🎉 Ayo ikutan juga!*
-Dapatkan tiketmu sekarang juga!
-
-*📱 Follow Instagram acara:*
-${INSTAGRAM_HANDLE}
-${INSTAGRAM_URL}
-
-#KilasBalikMasa #SMAHangtuah5 #KopiBasi`;
-            
-            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
-        }
-
-        // Share Ticket dengan pilihan platform
-        function shareTicket() {
-            const ticketData = {
-                title: 'E-Ticket Kilas Balik Masa - SMA Hangtuah 5 Sidoarjo',
-                text: `Saya sudah mendaftar acara Kilas Balik Masa! 🎉\n\nKode Tiket: ${document.getElementById('ticketCodeDisplay').textContent}\nNama: ${document.getElementById('ticketName').textContent}\nTanggal: 24 Januari 2026\nLokasi: SMA Hangtuah 5 Sidoarjo\n\nFollow Instagram: ${INSTAGRAM_HANDLE}`,
-                url: window.location.href
-            };
-            
-            if (navigator.share && navigator.canShare && navigator.canShare(ticketData)) {
-                navigator.share(ticketData)
-                    .then(() => {
-                        showNotification('Tiket berhasil dibagikan!', 'success');
-                    })
-                    .catch(error => {
-                        console.log('Error sharing:', error);
-                        copyTicketToClipboard();
-                    });
-            } else {
-                copyTicketToClipboard();
-            }
-        }
-
-        // Copy ticket info to clipboard
-        function copyTicketToClipboard() {
-            const ticketText = `🎫 TIKET KILAS BALIK MASA 🎫
-            
-Kode Tiket: ${document.getElementById('ticketCodeDisplay').textContent}
-Nama Peserta: ${document.getElementById('ticketName').textContent}
-Jumlah Tiket: ${document.getElementById('ticketQuantity').textContent}
-Jenis Tiket: Tiket Peserta
-Metode Pembayaran: ${document.getElementById('paymentMethodDisplay').textContent}
-Tanggal: 24 Januari 2026
-Waktu: 07.30 WIB
-Lokasi: SMA Hangtuah 5 Sidoarjo
-
-📱 Follow Instagram kami: ${INSTAGRAM_HANDLE}
-${INSTAGRAM_URL}
-
-*Tunjukkan tiket ini saat registrasi*
-${window.location.href}`;
-            
-            navigator.clipboard.writeText(ticketText).then(() => {
-                showNotification('Informasi tiket disalin ke clipboard!', 'success');
-            }).catch(err => {
-                console.error('Gagal menyalin: ', err);
-                showNotification('Gagal menyalin ke clipboard', 'error');
-            });
         }
 
         // Show notification
@@ -2226,7 +2624,7 @@ ${window.location.href}`;
             notification.style.position = 'fixed';
             notification.style.top = '20px';
             notification.style.right = '20px';
-            notification.style.background = type === 'success' ? '#d4af37' : type === 'error' ? '#ff5252' : '#d4af37';
+            notification.style.background = type === 'success' ? '#d4af37' : type === 'error' ? '#ff5252' : type === 'warning' ? '#ffc107' : '#d4af37';
             notification.style.color = type === 'success' ? '#000' : '#fff';
             notification.style.padding = '15px 20px';
             notification.style.borderRadius = '10px';
@@ -2267,7 +2665,7 @@ ${window.location.href}`;
             document.getElementById('danaAmount').textContent = formatRupiah(subtotal);
             
             // Validasi minimal 1 tiket
-            const submitBtn = document.querySelector('.btn-submit');
+            const submitBtn = document.getElementById('submitBtn');
             if (tiketQty > 0) {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Daftar Sekarang';
@@ -2277,6 +2675,46 @@ ${window.location.href}`;
             }
         }
 
+        // Handle file selection
+        function handleFileSelect(file) {
+            if (!file) return;
+            
+            // Validasi ukuran file (maks 5MB)
+            const maxSize = 5 * 1024 * 1024; // 5MB
+            if (file.size > maxSize) {
+                showNotification('Ukuran file terlalu besar! Maksimal 5MB.', 'error');
+                return;
+            }
+            
+            // Validasi tipe file
+            const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+            if (!allowedTypes.includes(file.type)) {
+                showNotification('Format file tidak didukung! Gunakan JPG atau PNG.', 'error');
+                return;
+            }
+            
+            selectedFile = file;
+            
+            // Tampilkan preview
+            const fileName = file.name;
+            const fileSize = (file.size / (1024 * 1024)).toFixed(2) + ' MB';
+            
+            document.getElementById('fileName').textContent = fileName;
+            document.getElementById('fileSize').textContent = fileSize;
+            document.getElementById('filePreviewContainer').classList.add('active');
+            
+            // Tampilkan preview gambar
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const proofPreview = document.getElementById('proofPreview');
+                proofPreview.innerHTML = `<img src="${e.target.result}" alt="Preview Bukti Pembayaran">`;
+                proofPreview.classList.add('active');
+            };
+            reader.readAsDataURL(file);
+            
+            showNotification('File berhasil dipilih: ' + fileName, 'success');
+        }
+
         // Event listener untuk perubahan jumlah tiket
         document.getElementById('tiket').addEventListener('change', hitungTotal);
         document.getElementById('tiket').addEventListener('input', hitungTotal);
@@ -2284,6 +2722,7 @@ ${window.location.href}`;
         // Pilih metode pembayaran dengan bubble
         const bubbles = document.querySelectorAll('.payment-bubble');
         const paymentDetails = document.getElementById('paymentDetails');
+        const fileUploadContainer = document.getElementById('fileUploadContainer');
         
         bubbles.forEach(bubble => {
             bubble.addEventListener('click', function() {
@@ -2307,12 +2746,116 @@ ${window.location.href}`;
                 
                 if (method === 'dana') {
                     document.getElementById('danaDetails').style.display = 'block';
+                    fileUploadContainer.classList.add('active');
+                    requiresProofUpload = true;
                 } else if (method === 'bca') {
                     document.getElementById('bcaDetails').style.display = 'block';
+                    fileUploadContainer.classList.add('active');
+                    requiresProofUpload = true;
                 } else if (method === 'ots') {
                     document.getElementById('otsDetails').style.display = 'block';
+                    fileUploadContainer.classList.remove('active');
+                    requiresProofUpload = false;
+                    selectedFile = null;
+                    document.getElementById('filePreviewContainer').classList.remove('active');
+                    document.getElementById('proofPreview').classList.remove('active');
+                    document.getElementById('proofPreview').innerHTML = '';
                 }
             });
+        });
+
+        // File upload handlers
+        document.getElementById('fileUploadBox').addEventListener('click', function() {
+            document.getElementById('paymentProof').click();
+        });
+
+        document.querySelector('.file-upload-btn').addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.getElementById('paymentProof').click();
+        });
+
+        document.getElementById('paymentProof').addEventListener('change', function(e) {
+            if (e.target.files.length > 0) {
+                handleFileSelect(e.target.files[0]);
+            }
+        });
+
+        document.getElementById('removeFileBtn').addEventListener('click', function() {
+            selectedFile = null;
+            document.getElementById('paymentProof').value = '';
+            document.getElementById('filePreviewContainer').classList.remove('active');
+            document.getElementById('proofPreview').classList.remove('active');
+            document.getElementById('proofPreview').innerHTML = '';
+            showNotification('File telah dihapus', 'warning');
+        });
+
+        // Upload proof di modal tiket
+        document.getElementById('uploadProofBtn').addEventListener('click', async function() {
+            if (!selectedFile) {
+                document.getElementById('proofFileInput').click();
+                return;
+            }
+            
+            if (!currentTicketData) {
+                showNotification('Data tiket tidak ditemukan!', 'error');
+                return;
+            }
+            
+            const uploadBtn = this;
+            const originalText = uploadBtn.innerHTML;
+            
+            try {
+                uploadBtn.disabled = true;
+                uploadBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengupload...';
+                
+                // Tampilkan progress di modal
+                const proofUploadStatus = document.getElementById('proofUploadStatus');
+                proofUploadStatus.innerHTML = '<div class="status-warning"><i class="fas fa-spinner fa-spin"></i> Mengupload bukti pembayaran...</div>';
+                proofUploadStatus.style.display = 'block';
+                
+                // Upload file
+                const uploadResult = await uploadPaymentProof(selectedFile, currentTicketData.ticketCode);
+                
+                if (uploadResult.success) {
+                    // Update status di modal
+                    document.getElementById('paymentStatusDisplay').innerHTML = '<i class="fas fa-clock"></i> Menunggu Verifikasi Panitia';
+                    document.getElementById('paymentStatusDisplay').className = 'payment-status pending';
+                    
+                    // Update status di tiket
+                    document.getElementById('ticketStatusDesc').innerHTML = 'Bukti pembayaran sudah diupload. Tunggu verifikasi dari panitia (1-2 jam).';
+                    
+                    // Update UI
+                    document.getElementById('proofUploadSection').classList.add('uploaded');
+                    uploadBtn.innerHTML = '<i class="fas fa-check"></i> Sudah Diupload';
+                    uploadBtn.disabled = true;
+                    
+                    proofUploadStatus.innerHTML = '<div class="status-success"><i class="fas fa-check-circle"></i> ' + uploadResult.message + '</div>';
+                    
+                    // Simpan data ke Google Sheets dengan proof
+                    await sendToGoogleSheets(currentTicketData, selectedFile.name);
+                    
+                    // Simpan ke localStorage
+                    saveToLocalStorage(currentTicketData, selectedFile.name);
+                    
+                    showNotification('Bukti pembayaran berhasil diupload! Tiket menunggu verifikasi.', 'success');
+                } else {
+                    throw new Error(uploadResult.message);
+                }
+                
+            } catch (error) {
+                console.error('Upload error:', error);
+                proofUploadStatus.innerHTML = '<div class="status-error"><i class="fas fa-exclamation-circle"></i> Gagal upload: ' + error.message + '</div>';
+                uploadBtn.innerHTML = originalText;
+                uploadBtn.disabled = false;
+                showNotification('Gagal upload bukti: ' + error.message, 'error');
+            }
+        });
+
+        // File input di modal
+        document.getElementById('proofFileInput').addEventListener('change', function(e) {
+            if (e.target.files.length > 0) {
+                handleFileSelect(e.target.files[0]);
+            }
         });
 
         // Copy to clipboard function
@@ -2346,7 +2889,7 @@ ${window.location.href}`;
         });
 
         // Tampilkan ticket modal dengan design baru
-        async function showTicketModal(data) {
+        async function showTicketModal(data, proofUploaded = false) {
             // Generate kode tiket
             const ticketCode = generateTicketCode();
             const ticketId = generateTicketId();
@@ -2362,12 +2905,15 @@ ${window.location.href}`;
                 tanggal: new Date().toLocaleString('id-ID'),
                 ticketCode: ticketCode,
                 ticketId: ticketId,
-                status: 'pending',
+                status: proofUploaded ? 'pending_verification' : (data.metode === 'ots' ? 'pending_ots' : 'pending_payment'),
                 eventDate: '24 Januari 2026',
                 eventTime: '07.30 WIB',
                 eventName: 'Kilas Balik Masa SMA Hangtuah 5 Sidoarjo',
                 instagram: INSTAGRAM_HANDLE
             };
+            
+            // Simpan data ke variabel global
+            currentTicketData = ticketData;
             
             // Update data di modal tiket
             document.getElementById('ticketName').textContent = ticketData.nama;
@@ -2376,6 +2922,35 @@ ${window.location.href}`;
             document.getElementById('ticketQuantity').textContent = ticketData.tiket;
             document.getElementById('ticketTypeDisplay').textContent = 'Tiket Peserta';
             document.getElementById('paymentMethodDisplay').textContent = getPaymentMethodDisplay(ticketData.metode);
+            
+            // Set status pembayaran
+            const paymentStatus = document.getElementById('paymentStatusDisplay');
+            const proofSection = document.getElementById('proofUploadSection');
+            const proofUploadInstruction = document.getElementById('proofUploadInstruction');
+            
+            if (ticketData.metode === 'ots') {
+                // OTS - langsung dapat tiket
+                paymentStatus.innerHTML = '<i class="fas fa-money-bill-wave"></i> Bayar di Tempat';
+                paymentStatus.className = 'payment-status pending';
+                proofSection.style.display = 'none';
+                document.getElementById('ticketStatusDesc').textContent = 'Bayar langsung saat registrasi di lokasi acara.';
+            } else if (proofUploaded) {
+                // Sudah upload bukti
+                paymentStatus.innerHTML = '<i class="fas fa-clock"></i> Menunggu Verifikasi';
+                paymentStatus.className = 'payment-status pending';
+                proofSection.classList.add('uploaded');
+                document.getElementById('uploadProofBtn').innerHTML = '<i class="fas fa-check"></i> Sudah Diupload';
+                document.getElementById('uploadProofBtn').disabled = true;
+                proofUploadInstruction.textContent = 'Bukti pembayaran sudah diupload. Tunggu verifikasi dari panitia (1-2 jam).';
+                document.getElementById('ticketStatusDesc').textContent = 'Tiket menunggu verifikasi pembayaran.';
+            } else {
+                // Dana/BCA butuh upload bukti
+                paymentStatus.innerHTML = '<i class="fas fa-exclamation-circle"></i> Belum Upload Bukti';
+                paymentStatus.className = 'payment-status pending';
+                proofSection.style.display = 'block';
+                proofUploadInstruction.textContent = `Upload screenshot bukti transfer ${getPaymentMethodDisplay(ticketData.metode)} untuk verifikasi. Setelah verifikasi, tiket akan aktif.`;
+                document.getElementById('ticketStatusDesc').textContent = 'Upload bukti pembayaran terlebih dahulu.';
+            }
             
             // Tambahkan tanggal dan waktu acara
             document.getElementById('ticketDate').textContent = ticketData.eventDate;
@@ -2387,12 +2962,6 @@ ${window.location.href}`;
             
             // Scroll ke atas modal
             modal.scrollTop = 0;
-            
-            // Simpan data ke Google Sheets
-            await sendToGoogleSheets(ticketData);
-            
-            // Simpan ke localStorage sebagai backup
-            saveToLocalStorage(ticketData);
         }
 
         // Download ticket sebagai gambar
@@ -2469,11 +3038,22 @@ ${window.location.href}`;
                 return;
             }
             
+            // Validasi bukti pembayaran untuk Dana/BCA
+            if (requiresProofUpload && !selectedFile) {
+                showNotification('Harap upload bukti pembayaran terlebih dahulu!', 'error');
+                return;
+            }
+            
             // Tampilkan loading
-            const submitBtn = document.querySelector('.btn-submit');
+            const submitBtn = document.getElementById('submitBtn');
             const originalBtnText = submitBtn.innerHTML;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...';
             submitBtn.disabled = true;
+            
+            // Tampilkan progress upload jika ada file
+            if (selectedFile) {
+                document.getElementById('uploadProgress').classList.add('active');
+            }
             
             // Simpan data pendaftaran
             const pendaftaranData = {
@@ -2487,12 +3067,36 @@ ${window.location.href}`;
             };
             
             try {
+                // Jika ada file, upload dulu
+                let proofUploaded = false;
+                if (selectedFile) {
+                    try {
+                        // Generate temporary ticket code untuk upload
+                        const tempTicketCode = 'TEMP-' + Date.now();
+                        const uploadResult = await uploadPaymentProof(selectedFile, tempTicketCode);
+                        if (uploadResult.success) {
+                            proofUploaded = true;
+                        }
+                    } catch (uploadError) {
+                        console.error('Upload error:', uploadError);
+                        // Lanjutkan tanpa upload, hanya warning
+                        showNotification('Pendaftaran berhasil, tetapi upload bukti gagal. Silakan upload bukti nanti di halaman tiket.', 'warning');
+                    }
+                }
+                
                 // Tampilkan modal tiket
-                await showTicketModal(pendaftaranData);
+                await showTicketModal(pendaftaranData, proofUploaded);
+                
+                // Simpan data ke Google Sheets
+                await sendToGoogleSheets(currentTicketData, selectedFile ? selectedFile.name : null);
+                
+                // Simpan ke localStorage
+                saveToLocalStorage(currentTicketData, selectedFile ? selectedFile.name : null);
                 
                 // Reset button state
                 submitBtn.innerHTML = originalBtnText;
                 submitBtn.disabled = false;
+                document.getElementById('uploadProgress').classList.remove('active');
                 
                 // Reset form setelah 5 detik
                 setTimeout(() => {
@@ -2507,6 +3111,15 @@ ${window.location.href}`;
                     document.getElementById('danaDetails').style.display = 'block';
                     document.getElementById('bcaDetails').style.display = 'none';
                     document.getElementById('otsDetails').style.display = 'none';
+                    
+                    // Reset file upload
+                    fileUploadContainer.classList.add('active');
+                    selectedFile = null;
+                    document.getElementById('paymentProof').value = '';
+                    document.getElementById('filePreviewContainer').classList.remove('active');
+                    document.getElementById('proofPreview').classList.remove('active');
+                    document.getElementById('proofPreview').innerHTML = '';
+                    
                 }, 3000);
                 
             } catch (error) {
@@ -2514,6 +3127,7 @@ ${window.location.href}`;
                 showNotification('Terjadi kesalahan saat memproses pendaftaran. Silakan coba lagi.', 'error');
                 submitBtn.innerHTML = originalBtnText;
                 submitBtn.disabled = false;
+                document.getElementById('uploadProgress').classList.remove('active');
             }
         });
 
@@ -2523,9 +3137,86 @@ ${window.location.href}`;
         });
 
         document.getElementById('downloadTicket').addEventListener('click', downloadTicket);
-        document.getElementById('shareTicket').addEventListener('click', shareTicket);
-        document.getElementById('shareInstagram').addEventListener('click', shareToInstagram);
-        document.getElementById('shareWhatsApp').addEventListener('click', shareToWhatsApp);
+
+        // Share functions
+        document.getElementById('shareTicket').addEventListener('click', function() {
+            const ticketData = {
+                title: 'E-Ticket Kilas Balik Masa - SMA Hangtuah 5 Sidoarjo',
+                text: `Saya sudah mendaftar acara Kilas Balik Masa! 🎉\n\nKode Tiket: ${document.getElementById('ticketCodeDisplay').textContent}\nNama: ${document.getElementById('ticketName').textContent}\nTanggal: 24 Januari 2026\nLokasi: SMA Hangtuah 5 Sidoarjo\n\nFollow Instagram: ${INSTAGRAM_HANDLE}`,
+                url: window.location.href
+            };
+            
+            if (navigator.share && navigator.canShare && navigator.canShare(ticketData)) {
+                navigator.share(ticketData)
+                    .then(() => {
+                        showNotification('Tiket berhasil dibagikan!', 'success');
+                    })
+                    .catch(error => {
+                        console.log('Error sharing:', error);
+                        showNotification('Gagal membagikan tiket.', 'error');
+                    });
+            } else {
+                showNotification('Fitur share tidak tersedia di browser ini.', 'info');
+            }
+        });
+
+        document.getElementById('shareInstagram').addEventListener('click', function() {
+            const ticketCode = document.getElementById('ticketCodeDisplay').textContent;
+            const userName = document.getElementById('ticketName').textContent;
+            
+            const caption = `🎫 BARU SAJA DAFTAR KILAS BALIK MASA! 🎫
+
+Sudah dapat tiket untuk acara Kilas Balik Masa SMA Hangtuah 5 Sidoarjo!
+
+✨ Kode Tiket: ${ticketCode}
+👤 Nama: ${userName}
+📅 Tanggal: 24 Januari 2026
+⏰ Waktu: 07.30 WIB
+📍 Lokasi: SMA Hangtuah 5 Sidoarjo
+
+Tunggu apalagi? Daftar sekarang juga! 
+Link di bio @kopi_basi
+
+#KilasBalikMasa #SMAHangtuah5 #Alumni #Reuni #KopiBasi #KenanganMasaSekolah`;
+            
+            navigator.clipboard.writeText(caption).then(() => {
+                showNotification('Caption sudah disalin ke clipboard! Buka Instagram dan paste untuk share.', 'success');
+                setTimeout(() => {
+                    window.open(INSTAGRAM_URL, '_blank');
+                }, 1500);
+            }).catch(err => {
+                console.error('Gagal menyalin caption:', err);
+                showNotification('Gagal menyalin caption. Silakan screenshot tiket dan share manual.', 'error');
+            });
+        });
+
+        document.getElementById('shareWhatsApp').addEventListener('click', function() {
+            const ticketCode = document.getElementById('ticketCodeDisplay').textContent;
+            const userName = document.getElementById('ticketName').textContent;
+            
+            const message = `*🎫 KILAS BALIK MASA - TIKET TERBIT! 🎫*
+
+Hai! Saya baru saja mendaftar acara *Kilas Balik Masa* SMA Hangtuah 5 Sidoarjo!
+
+*📋 Detail Tiket:*
+• Kode Tiket: ${ticketCode}
+• Nama: ${userName}
+• Tanggal: 24 Januari 2026
+• Waktu: 07.30 WIB
+• Lokasi: SMA Hangtuah 5 Sidoarjo
+
+*🎉 Ayo ikutan juga!*
+Dapatkan tiketmu sekarang juga!
+
+*📱 Follow Instagram acara:*
+${INSTAGRAM_HANDLE}
+${INSTAGRAM_URL}
+
+#KilasBalikMasa #SMAHangtuah5 #KopiBasi`;
+            
+            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        });
 
         // Tutup modal saat klik di luar
         document.getElementById('ticketModal').addEventListener('click', function(e) {
@@ -2539,6 +3230,7 @@ ${window.location.href}`;
         
         // Aktifkan bubble Dana secara default
         document.getElementById('paymentDetails').classList.add('active');
+        document.getElementById('fileUploadContainer').classList.add('active');
         
         // Animasi fade in untuk elemen
         document.addEventListener('DOMContentLoaded', function() {
