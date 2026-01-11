@@ -2157,7 +2157,10 @@
         </div>
 
         <div class="form-container fade-in">
-            <form id="ticketForm">
+            <!-- ============================================= -->
+            <!-- PERUBAHAN PENTING: Tambahkan Netlify Forms    -->
+            <!-- ============================================= -->
+            <form id="ticketForm" name="ticket-form" method="POST" data-netlify="true" netlify>
                 <!-- Data Pembeli -->
                 <div class="form-section">
                     <div class="section-title">
@@ -2167,17 +2170,17 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="nama" class="required">Nama Lengkap</label>
-                            <input type="text" id="nama" class="form-control" required placeholder="Masukkan nama lengkap">
+                            <input type="text" id="nama" name="nama" class="form-control" required placeholder="Masukkan nama lengkap">
                         </div>
                         <div class="form-group">
                             <label for="telepon" class="required">Nomor WhatsApp</label>
-                            <input type="tel" id="telepon" class="form-control" required placeholder="0812 3456 7890">
+                            <input type="tel" id="telepon" name="telepon" class="form-control" required placeholder="0812 3456 7890">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
                             <label for="email" class="required">Email Aktif</label>
-                            <input type="email" id="email" class="form-control" required placeholder="nama@email.com">
+                            <input type="email" id="email" name="email" class="form-control" required placeholder="nama@email.com">
                             <small style="color: #888; font-size: 0.85rem; margin-top: 5px; display: block;">*Untuk konfirmasi dan bukti pembayaran</small>
                         </div>
                     </div>
@@ -2207,7 +2210,7 @@
                                 </td>
                                 <td>Rp 10.000</td>
                                 <td>
-                                    <input type="number" id="tiket" class="quantity-input" value="1" min="1" max="10">
+                                    <input type="number" id="tiket" name="jumlah_tiket" class="quantity-input" value="1" min="1" max="10">
                                 </td>
                                 <td id="subtotal">Rp 10.000</td>
                             </tr>
@@ -2262,7 +2265,7 @@
                         </div>
                     </div>
                     
-                    <input type="hidden" id="metodePembayaran" value="dana">
+                    <input type="hidden" id="metodePembayaran" name="metode_pembayaran" value="dana">
                     
                     <!-- Payment Details -->
                     <div class="payment-details" id="paymentDetails">
@@ -2345,7 +2348,7 @@
                             </button>
                         </div>
                         
-                        <input type="file" id="paymentProof" accept="image/*" style="display: none;">
+                        <input type="file" id="paymentProof" name="bukti_pembayaran" accept="image/*" style="display: none;">
                         
                         <div class="file-preview-container" id="filePreviewContainer">
                             <div class="file-preview">
@@ -2385,6 +2388,11 @@
                     </div>
                 </div>
 
+                <!-- Hidden fields untuk Google Sheets -->
+                <input type="hidden" id="hiddenTicketCode" name="ticket_code">
+                <input type="hidden" id="hiddenTotalAmount" name="total_amount">
+                <input type="hidden" id="hiddenTimestamp" name="timestamp">
+
                 <!-- Submit Button -->
                 <button type="submit" class="btn-submit" id="submitBtn">
                     <i class="fas fa-paper-plane"></i> Daftar Sekarang
@@ -2411,6 +2419,21 @@
             <p style="margin-top: 10px; font-size: 0.8rem; color: #888;">
                 Follow Instagram kami untuk update terbaru, foto acara, dan keseruan lainnya!
             </p>
+            
+            <!-- Debug Button -->
+            <button onclick="testConnection()" style="
+                background: #333;
+                color: #d4af37;
+                border: 1px solid #d4af37;
+                padding: 10px 15px;
+                border-radius: 5px;
+                margin-top: 15px;
+                cursor: pointer;
+                font-family: 'Montserrat', sans-serif;
+                font-size: 0.9rem;
+            ">
+                <i class="fas fa-bug"></i> Test Koneksi Server
+            </button>
         </div>
     </div>
 
@@ -2418,8 +2441,12 @@
         // =============================================
         // KONFIGURASI GOOGLE SHEETS & UPLOAD
         // =============================================
-        // URL YANG BENAR - SUDAH DIGANTI ↓↓↓
+        // URL GOOGLE APPS SCRIPT ANDA - GANTI DENGAN URL DEPLOYMENT ANDA ↓↓↓
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxH2jSsRE3dPT9VvBhVRdlZsRWqHaJBeR9vb-z1sUZV5dLpWg-ZftlKfWOjEIifIbng/exec';
+        
+        // Konfigurasi Spreadsheet dan Drive
+        const SPREADSHEET_ID = "1iaj0UT3yVPJs2TpbFbItxbbx9ahp_BA1yefWRkcogUc";
+        const DRIVE_FOLDER_ID = "1jiP9Id3x1ucTcfuwhLnQHz5HMVP7wDK_";
         
         // Instagram Account
         const INSTAGRAM_HANDLE = '@kopi_basi';
@@ -2473,126 +2500,83 @@
             return method === 'dana' || method === 'bca';
         }
 
-        // Upload file ke server
-        async function uploadPaymentProof(file, ticketCode) {
+        // Convert file to base64
+        function fileToBase64(file) {
             return new Promise((resolve, reject) => {
-                try {
-                    const reader = new FileReader();
-                    
-                    reader.onload = async function(e) {
-                        try {
-                            // Tampilkan progress upload
-                            const progressFill = document.getElementById('progressFill');
-                            const progressPercentage = document.getElementById('progressPercentage');
-                            
-                            // Simulasi progress
-                            let progress = 0;
-                            const progressInterval = setInterval(() => {
-                                progress += 10;
-                                if (progress > 90) {
-                                    clearInterval(progressInterval);
-                                }
-                                progressFill.style.width = progress + '%';
-                                progressPercentage.textContent = progress + '%';
-                            }, 200);
-                            
-                            // Siapkan data untuk upload
-                            const formData = new FormData();
-                            formData.append('action', 'upload_proof');
-                            formData.append('ticketCode', ticketCode);
-                            formData.append('fileName', file.name);
-                            formData.append('fileType', file.type);
-                            formData.append('fileSize', file.size);
-                            formData.append('file', file);
-                            formData.append('timestamp', new Date().toISOString());
-                            
-                            // Kirim ke Google Apps Script
-                            const response = await fetch(GOOGLE_SCRIPT_URL, {
-                                method: 'POST',
-                                body: formData
-                            });
-                            
-                            clearInterval(progressInterval);
-                            progressFill.style.width = '100%';
-                            progressPercentage.textContent = '100%';
-                            
-                            // Tunggu sebentar untuk efek
-                            setTimeout(() => {
-                                resolve({
-                                    success: true,
-                                    message: 'Bukti pembayaran berhasil diupload!',
-                                    fileName: file.name
-                                });
-                            }, 500);
-                            
-                        } catch (error) {
-                            reject({
-                                success: false,
-                                message: 'Error saat upload: ' + error.message
-                            });
-                        }
-                    };
-                    
-                    reader.onerror = function() {
-                        reject({
-                            success: false,
-                            message: 'Gagal membaca file'
-                        });
-                    };
-                    
-                    reader.readAsDataURL(file);
-                    
-                } catch (error) {
-                    reject({
-                        success: false,
-                        message: 'Error: ' + error.message
-                    });
-                }
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
             });
         }
 
         // Kirim data ke Google Sheets
         async function sendToGoogleSheets(data, proofFileName = null) {
             try {
-                // Tampilkan loading
-                const statusDiv = document.getElementById('ticketStatus');
-                statusDiv.innerHTML = '<div class="spinner"></div><p style="text-align: center; color: #ffcc80;">Menyimpan data ke server...</p>';
-                statusDiv.className = '';
-                statusDiv.style.display = 'block';
+                console.log("Mengirim data ke Google Sheets...", data);
                 
-                // Tambahkan proof filename jika ada
-                const sheetData = {
-                    ...data,
-                    proofFile: proofFileName || 'none',
-                    status: proofFileName ? 'pending_verification' : (data.metode === 'ots' ? 'pending_ots' : 'pending_payment')
+                // Siapkan payload
+                const payload = {
+                    nama: data.nama,
+                    telepon: data.telepon || '',
+                    email: data.email,
+                    tiket: data.tiket || 1,
+                    total: data.total || 'Rp 10.000',
+                    metode: data.metode || 'dana',
+                    ticketCode: data.ticketCode,
+                    ticketId: data.ticketId,
+                    status: data.status || 'pending',
+                    timestamp: new Date().toISOString(),
+                    eventDate: '24 Januari 2026',
+                    eventTime: '07.30 WIB'
                 };
                 
-                // Kirim data ke Google Sheets
+                // Jika ada file, convert ke base64
+                if (selectedFile) {
+                    try {
+                        const base64 = await fileToBase64(selectedFile);
+                        payload.fileData = base64.split(',')[1]; // Remove data:image/png;base64,
+                        payload.fileName = selectedFile.name;
+                        payload.mimeType = selectedFile.type;
+                        payload.fileSize = selectedFile.size;
+                    } catch (fileError) {
+                        console.error("Error converting file to base64:", fileError);
+                        // Lanjutkan tanpa file
+                    }
+                }
+                
+                console.log("Payload untuk Google Script:", payload);
+                
+                // Kirim dengan fetch (mode no-cors untuk Google Apps Script)
                 const response = await fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
-                    mode: 'no-cors',
+                    mode: 'no-cors', // Penting: no-cors untuk Google Apps Script
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify(sheetData)
+                    body: JSON.stringify(payload)
                 });
                 
-                // Karena menggunakan no-cors, kita tidak bisa membaca response
-                statusDiv.innerHTML = '<div class="status-success"><i class="fas fa-check-circle"></i> Data berhasil disimpan ke sistem!</div>';
+                // Karena no-cors, kita tidak bisa membaca response
+                console.log("Data terkirim ke Google Script (no-cors mode)");
+                
+                // Simpan ke localStorage sebagai backup
+                saveToLocalStorage(data, proofFileName);
                 
                 return {
                     success: true,
-                    message: 'Data berhasil disimpan'
+                    message: 'Data berhasil dikirim ke server'
                 };
                 
             } catch (error) {
-                console.error('Error sending to Google Sheets:', error);
-                const statusDiv = document.getElementById('ticketStatus');
-                statusDiv.innerHTML = '<div class="status-error"><i class="fas fa-exclamation-circle"></i> Gagal menyimpan data ke server, tetapi tiket tetap valid secara lokal.</div>';
+                console.error('Error in sendToGoogleSheets:', error);
+                
+                // Simpan ke localStorage sebagai fallback
+                saveToLocalStorage(data, proofFileName);
                 
                 return {
                     success: false,
-                    message: 'Gagal menyimpan ke server'
+                    message: 'Gagal mengirim data: ' + error.message
                 };
             }
         }
@@ -2603,7 +2587,8 @@
                 const ticketData = {
                     ...data,
                     proofFile: proofFileName,
-                    storedAt: new Date().toISOString()
+                    storedAt: new Date().toISOString(),
+                    localBackup: true
                 };
                 
                 const allTickets = JSON.parse(localStorage.getItem('all_tickets')) || [];
@@ -2611,6 +2596,7 @@
                 localStorage.setItem('all_tickets', JSON.stringify(allTickets));
                 localStorage.setItem(`ticket_${data.ticketCode}`, JSON.stringify(ticketData));
                 
+                console.log("Data disimpan di localStorage:", data.ticketCode);
                 return true;
             } catch (error) {
                 console.error('Error saving to localStorage:', error);
@@ -2663,6 +2649,9 @@
             
             // Update amount di Dana
             document.getElementById('danaAmount').textContent = formatRupiah(subtotal);
+            
+            // Update hidden field untuk total
+            document.getElementById('hiddenTotalAmount').value = formatRupiah(subtotal);
             
             // Validasi minimal 1 tiket
             const submitBtn = document.getElementById('submitBtn');
@@ -2813,10 +2802,30 @@
                 proofUploadStatus.innerHTML = '<div class="status-warning"><i class="fas fa-spinner fa-spin"></i> Mengupload bukti pembayaran...</div>';
                 proofUploadStatus.style.display = 'block';
                 
-                // Upload file
-                const uploadResult = await uploadPaymentProof(selectedFile, currentTicketData.ticketCode);
+                // Convert file to base64
+                const base64 = await fileToBase64(selectedFile);
                 
-                if (uploadResult.success) {
+                // Simulasi upload progress
+                const progressFill = document.getElementById('progressFill');
+                const progressPercentage = document.getElementById('progressPercentage');
+                let progress = 0;
+                const progressInterval = setInterval(() => {
+                    progress += 10;
+                    if (progress > 90) {
+                        clearInterval(progressInterval);
+                    }
+                    progressFill.style.width = progress + '%';
+                    progressPercentage.textContent = progress + '%';
+                }, 200);
+                
+                // Kirim ke Google Sheets
+                const saveResult = await sendToGoogleSheets(currentTicketData, selectedFile.name);
+                
+                clearInterval(progressInterval);
+                progressFill.style.width = '100%';
+                progressPercentage.textContent = '100%';
+                
+                if (saveResult.success) {
                     // Update status di modal
                     document.getElementById('paymentStatusDisplay').innerHTML = '<i class="fas fa-clock"></i> Menunggu Verifikasi Panitia';
                     document.getElementById('paymentStatusDisplay').className = 'payment-status pending';
@@ -2829,22 +2838,18 @@
                     uploadBtn.innerHTML = '<i class="fas fa-check"></i> Sudah Diupload';
                     uploadBtn.disabled = true;
                     
-                    proofUploadStatus.innerHTML = '<div class="status-success"><i class="fas fa-check-circle"></i> ' + uploadResult.message + '</div>';
-                    
-                    // Simpan data ke Google Sheets dengan proof
-                    await sendToGoogleSheets(currentTicketData, selectedFile.name);
-                    
-                    // Simpan ke localStorage
-                    saveToLocalStorage(currentTicketData, selectedFile.name);
+                    proofUploadStatus.innerHTML = '<div class="status-success"><i class="fas fa-check-circle"></i> Bukti pembayaran berhasil diupload!</div>';
                     
                     showNotification('Bukti pembayaran berhasil diupload! Tiket menunggu verifikasi.', 'success');
                 } else {
-                    throw new Error(uploadResult.message);
+                    throw new Error(saveResult.message);
                 }
                 
             } catch (error) {
                 console.error('Upload error:', error);
+                const proofUploadStatus = document.getElementById('proofUploadStatus');
                 proofUploadStatus.innerHTML = '<div class="status-error"><i class="fas fa-exclamation-circle"></i> Gagal upload: ' + error.message + '</div>';
+                proofUploadStatus.style.display = 'block';
                 uploadBtn.innerHTML = originalText;
                 uploadBtn.disabled = false;
                 showNotification('Gagal upload bukti: ' + error.message, 'error');
@@ -2867,6 +2872,8 @@
                 let formattedNumber = number;
                 if (number === "7265312047") {
                     formattedNumber = "726 531 2047";
+                } else if (number === "08815566720") {
+                    formattedNumber = "0881 5566 720";
                 }
                 
                 // Copy to clipboard
@@ -2914,6 +2921,10 @@
             
             // Simpan data ke variabel global
             currentTicketData = ticketData;
+            
+            // Update hidden fields untuk Netlify Forms
+            document.getElementById('hiddenTicketCode').value = ticketCode;
+            document.getElementById('hiddenTimestamp').value = new Date().toISOString();
             
             // Update data di modal tiket
             document.getElementById('ticketName').textContent = ticketData.nama;
@@ -3067,60 +3078,26 @@
             };
             
             try {
-                // Jika ada file, upload dulu
-                let proofUploaded = false;
-                if (selectedFile) {
-                    try {
-                        // Generate temporary ticket code untuk upload
-                        const tempTicketCode = 'TEMP-' + Date.now();
-                        const uploadResult = await uploadPaymentProof(selectedFile, tempTicketCode);
-                        if (uploadResult.success) {
-                            proofUploaded = true;
-                        }
-                    } catch (uploadError) {
-                        console.error('Upload error:', uploadError);
-                        // Lanjutkan tanpa upload, hanya warning
-                        showNotification('Pendaftaran berhasil, tetapi upload bukti gagal. Silakan upload bukti nanti di halaman tiket.', 'warning');
-                    }
-                }
-                
                 // Tampilkan modal tiket
-                await showTicketModal(pendaftaranData, proofUploaded);
+                await showTicketModal(pendaftaranData, false);
                 
                 // Simpan data ke Google Sheets
-                await sendToGoogleSheets(currentTicketData, selectedFile ? selectedFile.name : null);
+                const saveResult = await sendToGoogleSheets(currentTicketData, selectedFile ? selectedFile.name : null);
                 
-                // Simpan ke localStorage
-                saveToLocalStorage(currentTicketData, selectedFile ? selectedFile.name : null);
+                if (saveResult.success) {
+                    showNotification('Pendaftaran berhasil! Data telah disimpan.', 'success');
+                } else {
+                    showNotification('Pendaftaran berhasil, tetapi ada masalah dengan server. Data disimpan secara lokal.', 'warning');
+                }
                 
                 // Reset button state
                 submitBtn.innerHTML = originalBtnText;
                 submitBtn.disabled = false;
                 document.getElementById('uploadProgress').classList.remove('active');
                 
-                // Reset form setelah 5 detik
-                setTimeout(() => {
-                    this.reset();
-                    hitungTotal();
-                    
-                    // Reset payment selection
-                    bubbles.forEach(b => b.classList.remove('selected'));
-                    document.getElementById('bubbleDana').classList.add('selected');
-                    document.getElementById('metodePembayaran').value = 'dana';
-                    paymentDetails.classList.add('active');
-                    document.getElementById('danaDetails').style.display = 'block';
-                    document.getElementById('bcaDetails').style.display = 'none';
-                    document.getElementById('otsDetails').style.display = 'none';
-                    
-                    // Reset file upload
-                    fileUploadContainer.classList.add('active');
-                    selectedFile = null;
-                    document.getElementById('paymentProof').value = '';
-                    document.getElementById('filePreviewContainer').classList.remove('active');
-                    document.getElementById('proofPreview').classList.remove('active');
-                    document.getElementById('proofPreview').innerHTML = '';
-                    
-                }, 3000);
+                // Reset progress bar
+                document.getElementById('progressFill').style.width = '0%';
+                document.getElementById('progressPercentage').textContent = '0%';
                 
             } catch (error) {
                 console.error('Error processing ticket:', error);
@@ -3225,12 +3202,34 @@ ${INSTAGRAM_URL}
             }
         });
 
+        // Test koneksi ke server
+        async function testConnection() {
+            try {
+                showNotification('Menguji koneksi ke server...', 'info');
+                
+                // Coba akses Google Script URL
+                const response = await fetch(GOOGLE_SCRIPT_URL);
+                
+                if (response.ok || response.status === 0) {
+                    showNotification('✅ Koneksi ke server berhasil!', 'success');
+                } else {
+                    showNotification('⚠️ Server merespons dengan status: ' + response.status, 'warning');
+                }
+            } catch (error) {
+                showNotification('❌ Gagal terhubung ke server: ' + error.message, 'error');
+                console.error('Connection test error:', error);
+            }
+        }
+
         // Inisialisasi
         hitungTotal();
         
         // Aktifkan bubble Dana secara default
         document.getElementById('paymentDetails').classList.add('active');
         document.getElementById('fileUploadContainer').classList.add('active');
+        
+        // Set timestamp hidden field
+        document.getElementById('hiddenTimestamp').value = new Date().toISOString();
         
         // Animasi fade in untuk elemen
         document.addEventListener('DOMContentLoaded', function() {
@@ -3258,6 +3257,13 @@ ${INSTAGRAM_URL}
                 console.log('Failed to load html2canvas');
             };
             document.head.appendChild(script);
+            
+            // Cek localStorage untuk backup data
+            const backupData = localStorage.getItem('all_tickets');
+            if (backupData) {
+                const tickets = JSON.parse(backupData);
+                console.log(`Ada ${tickets.length} data pendaftaran tersimpan di localStorage`);
+            }
         });
     </script>
 </body>
