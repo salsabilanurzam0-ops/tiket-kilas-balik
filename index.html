@@ -11,8 +11,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Favicon -->
+    <!-- Favicon & PWA -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎫</text></svg>">
+    <meta name="theme-color" content="#000000">
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
     
     <!-- Open Graph -->
     <meta property="og:title" content="KILAS BALIK MASA - SMA Hangtuah 5 Sidoarjo">
@@ -29,6 +33,17 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Reduced motion preference */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
         }
 
         html {
@@ -251,6 +266,62 @@
         }
 
         /* ============================================= */
+        /* COUNTDOWN TIMER */
+        /* ============================================= */
+        .countdown-section {
+            background: rgba(17, 17, 17, 0.9);
+            border-radius: 16px;
+            padding: 25px;
+            margin: 25px 0;
+            border: 2px solid #d4af37;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        .countdown-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #d4af37;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .countdown-item {
+            background: rgba(30, 30, 30, 0.8);
+            border-radius: 10px;
+            padding: 15px 10px;
+            min-width: 70px;
+            border: 2px solid #d4af37;
+            text-align: center;
+        }
+
+        .countdown-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffcc80;
+            margin-bottom: 5px;
+        }
+
+        .countdown-label {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.8rem;
+            color: #b0b0b0;
+            text-transform: uppercase;
+        }
+
+        /* ============================================= */
         /* SOCIAL MEDIA SECTION */
         /* ============================================= */
         .social-section {
@@ -378,14 +449,26 @@
         /* BENEFITS SECTION */
         /* ============================================= */
         .benefits {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: 1fr;
             gap: 15px;
             margin: 25px 0;
             padding: 20px;
             background: rgba(26, 26, 26, 0.8);
             border-radius: 12px;
             border: 2px solid rgba(212, 175, 55, 0.3);
+        }
+
+        @media (min-width: 600px) {
+            .benefits {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 992px) {
+            .benefits {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
 
         .benefit-item {
@@ -472,10 +555,24 @@
             gap: 0;
         }
 
+        @media (min-width: 992px) {
+            .form-row {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+        }
+
         .form-group {
             width: 100%;
             padding: 0;
             margin-bottom: 20px;
+        }
+
+        @media (min-width: 992px) {
+            .form-group {
+                width: calc(50% - 10px);
+            }
         }
 
         .form-group label {
@@ -838,6 +935,37 @@
             margin: 25px 0;
         }
 
+        @media (min-width: 600px) {
+            .payment-options {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .payment-bubble {
+                width: calc(50% - 10px);
+                flex-direction: column;
+                height: 150px;
+                justify-content: center;
+                text-align: center;
+            }
+            
+            .payment-bubble i {
+                margin-right: 0;
+                margin-bottom: 8px;
+            }
+            
+            .payment-bubble .payment-text {
+                align-items: center;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .payment-bubble {
+                width: 180px;
+            }
+        }
+
         .payment-bubble {
             display: flex;
             flex-direction: row;
@@ -1173,6 +1301,12 @@
             max-height: none;
         }
 
+        @media (min-width: 992px) {
+            .ticket-container {
+                max-width: 500px;
+            }
+        }
+
         .ticket-header {
             background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
             padding: 25px 20px 20px;
@@ -1228,6 +1362,12 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 15px;
             margin-bottom: 25px;
+        }
+
+        @media (min-width: 992px) {
+            .ticket-info-item {
+                padding: 20px;
+            }
         }
 
         .ticket-info-item {
@@ -1414,6 +1554,8 @@
             max-height: 200px;
             border-radius: 8px;
             border: 2px solid #d4af37;
+            display: block;
+            margin: 0 auto;
         }
 
         .proof-upload-btn {
@@ -1545,6 +1687,16 @@
             display: flex;
             flex-direction: column;
             gap: 12px;
+        }
+
+        @media (min-width: 600px) {
+            .ticket-actions {
+                flex-direction: row;
+            }
+            
+            .btn-ticket {
+                flex: 1;
+            }
         }
 
         .btn-ticket {
@@ -1701,6 +1853,57 @@
         }
 
         /* ============================================= */
+        /* NOTIFICATION STYLES */
+        /* ============================================= */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 9999;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            max-width: 300px;
+            text-align: center;
+            animation: fadeIn 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        /* ============================================= */
+        /* QR CODE STYLES */
+        /* ============================================= */
+        .qr-code-container {
+            text-align: center;
+            padding: 20px;
+            background: rgba(17, 17, 17, 0.8);
+            border-radius: 10px;
+            border: 2px solid #d4af37;
+            margin: 20px 0;
+        }
+
+        .qr-code-title {
+            font-family: 'Montserrat', sans-serif;
+            color: #ffcc80;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        #qrCodeCanvas {
+            border: 2px solid #d4af37;
+            border-radius: 8px;
+            padding: 10px;
+            background: white;
+            margin: 0 auto;
+            display: block;
+            max-width: 200px;
+        }
+
+        /* ============================================= */
         /* ANIMATIONS */
         /* ============================================= */
         @keyframes fadeIn {
@@ -1748,41 +1951,6 @@
             .header-main {
                 font-size: 3rem;
             }
-            
-            .payment-options {
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .payment-bubble {
-                width: calc(50% - 10px);
-                flex-direction: column;
-                height: 150px;
-                justify-content: center;
-                text-align: center;
-            }
-            
-            .payment-bubble i {
-                margin-right: 0;
-                margin-bottom: 8px;
-            }
-            
-            .payment-bubble .payment-text {
-                align-items: center;
-            }
-            
-            .benefits {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .ticket-actions {
-                flex-direction: row;
-            }
-            
-            .btn-ticket {
-                flex: 1;
-            }
         }
 
         @media (min-width: 992px) {
@@ -1796,31 +1964,6 @@
             
             .header-main {
                 font-size: 4rem;
-            }
-            
-            .benefits {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .payment-bubble {
-                width: 180px;
-            }
-            
-            .form-row {
-                flex-direction: row;
-                flex-wrap: wrap;
-            }
-            
-            .form-group {
-                width: calc(50% - 20px);
-            }
-            
-            .ticket-info-item {
-                padding: 20px;
-            }
-            
-            .ticket-container {
-                max-width: 500px;
             }
         }
     </style>
@@ -1896,6 +2039,17 @@
                     <div class="payment-status pending" id="paymentStatusDisplay">
                         <i class="fas fa-clock"></i> Menunggu Upload Bukti
                     </div>
+                </div>
+                
+                <!-- QR Code Display -->
+                <div class="qr-code-container hidden" id="qrCodeContainer">
+                    <div class="qr-code-title">
+                        <i class="fas fa-qrcode"></i> QR CODE TIKET
+                    </div>
+                    <canvas id="qrCodeCanvas"></canvas>
+                    <p style="color: #b0b0b0; font-size: 0.85rem; margin-top: 10px;">
+                        Scan QR code ini saat registrasi di lokasi
+                    </p>
                 </div>
                 
                 <!-- Upload Proof Section -->
@@ -1998,6 +2152,32 @@
             </div>
         </div>
 
+        <!-- Countdown Timer -->
+        <div class="countdown-section fade-in">
+            <h3><i class="fas fa-clock"></i> COUNTDOWN ACARA</h3>
+            <div class="countdown-timer" id="countdownTimer">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="countdownDays">00</div>
+                    <div class="countdown-label">Hari</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="countdownHours">00</div>
+                    <div class="countdown-label">Jam</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="countdownMinutes">00</div>
+                    <div class="countdown-label">Menit</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="countdownSeconds">00</div>
+                    <div class="countdown-label">Detik</div>
+                </div>
+            </div>
+            <p style="color: #ffcc80; margin-top: 15px; font-size: 0.95rem;">
+                Segera daftar sebelum kuota penuh!
+            </p>
+        </div>
+
         <!-- Social Media Section -->
         <div class="social-section fade-in">
             <h3><i class="fab fa-instagram"></i> IKUTI INSTAGRAM KAMI</h3>
@@ -2048,7 +2228,7 @@
             <!-- Status Messages -->
             <div class="status-message hidden" id="formStatus"></div>
             
-            <form id="ticketForm" name="ticket-form" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <form id="ticketForm" name="ticket-form" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data">
                 <!-- Netlify Honeypot -->
                 <div class="hidden">
                     <input name="bot-field">
@@ -2235,7 +2415,7 @@
                         <div class="file-upload-box" id="fileUploadBox">
                             <i class="fas fa-cloud-upload-alt"></i>
                             <div class="file-upload-text">Klik untuk Upload Bukti</div>
-                            <div class="file-upload-subtext">Format: JPG, PNG (Maks: 5MB)</div>
+                            <div class="file-upload-subtext">Format: JPG, PNG, WebP (Maks: 5MB)</div>
                             <button type="button" class="file-upload-btn">
                                 <i class="fas fa-upload"></i> Pilih File
                             </button>
@@ -2272,7 +2452,7 @@
                             <h6>📸 INSTRUKSI UPLOAD:</h6>
                             <ul>
                                 <li>Pastikan screenshot bukti transfer JELAS terbaca</li>
-                                <li>Format foto: JPG/PNG (rekomendasi: screenshot)</li>
+                                <li>Format foto: JPG/PNG/WebP (rekomendasi: screenshot)</li>
                                 <li>Ukuran maksimal 5MB</li>
                                 <li>Pastikan nominal, nama pengirim, dan waktu transfer terlihat</li>
                                 <li>Untuk BCA: pastikan keterangan nama & email terlihat</li>
@@ -2332,17 +2512,24 @@
         </div>
     </div>
 
+    <!-- QR Code Library -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+
     <script>
         // =============================================
         // KONFIGURASI
         // =============================================
-        // 🔧 GANTI URL INI DENGAN URL GOOGLE APPS SCRIPT ANDA
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxH2jSsRE3dPT9VvBhVRdlZsRWqHaJBeR9vb-z1sUZV5dLpWg-ZftlKfWOjEIifIbng/exec';
-        
-        const INSTAGRAM_HANDLE = '@kopi_basi';
-        const INSTAGRAM_URL = 'https://instagram.com/kopi_basi';
-        const HARGA_TIKET = 10000;
-        const STORAGE_KEY = 'kbm_tickets';
+        const config = {
+            GOOGLE_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbxH2jSsRE3dPT9VvBhVRdlZsRWqHaJBeR9vb-z1sUZV5dLpWg-ZftlKfWOjEIifIbng/exec',
+            INSTAGRAM_HANDLE: '@kopi_basi',
+            INSTAGRAM_URL: 'https://instagram.com/kopi_basi',
+            HARGA_TIKET: 10000,
+            MAX_TICKETS: 10,
+            MAX_FILE_SIZE: 5 * 1024 * 1024, // 5MB
+            STORAGE_KEY: 'kbm_tickets',
+            EVENT_DATE: new Date('2026-01-24T07:30:00+07:00'),
+            ALLOWED_FILE_TYPES: ['image/jpeg', 'image/png', 'image/jpg', 'image/webp']
+        };
 
         // =============================================
         // STATE MANAGEMENT
@@ -2351,6 +2538,7 @@
         let currentTicketData = null;
         let requiresProofUpload = false;
         let isProcessing = false;
+        let countdownInterval = null;
 
         // =============================================
         // UTILITY FUNCTIONS
@@ -2439,6 +2627,33 @@
         }
 
         // =============================================
+        // COUNTDOWN TIMER
+        // =============================================
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = config.EVENT_DATE.getTime() - now;
+            
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById('countdownDays').textContent = '00';
+                document.getElementById('countdownHours').textContent = '00';
+                document.getElementById('countdownMinutes').textContent = '00';
+                document.getElementById('countdownSeconds').textContent = '00';
+                return;
+            }
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('countdownDays').textContent = days.toString().padStart(2, '0');
+            document.getElementById('countdownHours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('countdownMinutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('countdownSeconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        // =============================================
         // LOADING FUNCTIONS
         // =============================================
         function showLoading(text = 'Memproses data...') {
@@ -2465,20 +2680,18 @@
         }
 
         function handleFileSelect(file) {
-            if (!file) return;
+            if (!file) return false;
             
-            // Validasi ukuran file (maks 5MB)
-            const maxSize = 5 * 1024 * 1024;
-            if (file.size > maxSize) {
-                showNotification('Ukuran file terlalu besar! Maksimal 5MB.', 'error');
-                return;
+            // Validasi ukuran file
+            if (file.size > config.MAX_FILE_SIZE) {
+                showNotification(`Ukuran file terlalu besar! Maksimal ${config.MAX_FILE_SIZE / (1024*1024)}MB.`, 'error');
+                return false;
             }
             
             // Validasi tipe file
-            const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
-            if (!allowedTypes.includes(file.type)) {
-                showNotification('Format file tidak didukung! Gunakan JPG atau PNG.', 'error');
-                return;
+            if (!config.ALLOWED_FILE_TYPES.includes(file.type)) {
+                showNotification('Format file tidak didukung! Gunakan JPG, PNG, atau WebP.', 'error');
+                return false;
             }
             
             selectedFile = file;
@@ -2501,6 +2714,7 @@
             reader.readAsDataURL(file);
             
             showNotification('File berhasil dipilih: ' + fileName, 'success');
+            return true;
         }
 
         // =============================================
@@ -2508,7 +2722,7 @@
         // =============================================
         function saveToLocalStorage(data) {
             try {
-                const allTickets = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+                const allTickets = JSON.parse(localStorage.getItem(config.STORAGE_KEY)) || [];
                 const ticketData = {
                     ...data,
                     storedAt: new Date().toISOString(),
@@ -2517,7 +2731,7 @@
                 };
                 
                 allTickets.push(ticketData);
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(allTickets));
+                localStorage.setItem(config.STORAGE_KEY, JSON.stringify(allTickets));
                 localStorage.setItem(`kbm_ticket_${data.ticketCode}`, JSON.stringify(ticketData));
                 
                 console.log('✅ Data tersimpan di localStorage:', data.ticketCode);
@@ -2530,7 +2744,7 @@
 
         function getBackupCount() {
             try {
-                const data = localStorage.getItem(STORAGE_KEY);
+                const data = localStorage.getItem(config.STORAGE_KEY);
                 return data ? JSON.parse(data).length : 0;
             } catch {
                 return 0;
@@ -2548,8 +2762,32 @@
 
         function clearAllData() {
             if (confirm('Yakin ingin menghapus semua data backup lokal?')) {
-                localStorage.removeItem(STORAGE_KEY);
+                localStorage.removeItem(config.STORAGE_KEY);
                 showNotification('Semua data backup telah dihapus.', 'success');
+            }
+        }
+
+        // =============================================
+        // NETWORK ERROR HANDLING
+        // =============================================
+        function handleNetworkError(error, context) {
+            console.error(`❌ Error in ${context}:`, error);
+            
+            try {
+                const backup = {
+                    error: error.message,
+                    context: context,
+                    timestamp: new Date().toISOString(),
+                    url: window.location.href
+                };
+                
+                const errorLog = JSON.parse(localStorage.getItem('kbm_errors')) || [];
+                errorLog.push(backup);
+                localStorage.setItem('kbm_errors', JSON.stringify(errorLog));
+                
+                return { success: false, backup: true, message: 'Data disimpan lokal' };
+            } catch (backupError) {
+                return { success: false, message: 'Gagal total: ' + error.message };
             }
         }
 
@@ -2592,7 +2830,7 @@
                 
                 // Try with CORS first
                 try {
-                    const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    const response = await fetch(config.GOOGLE_SCRIPT_URL, {
                         method: 'POST',
                         mode: 'cors',
                         headers: { 'Content-Type': 'application/json' },
@@ -2613,7 +2851,7 @@
                     
                     // Fallback to no-cors mode
                     try {
-                        await fetch(GOOGLE_SCRIPT_URL, {
+                        await fetch(config.GOOGLE_SCRIPT_URL, {
                             method: 'POST',
                             mode: 'no-cors',
                             headers: { 'Content-Type': 'application/json' },
@@ -2643,10 +2881,36 @@
                     };
                 }
                 
-                return { 
-                    success: false, 
-                    message: 'Gagal mengirim: ' + error.message 
-                };
+                return handleNetworkError(error, 'sendToGoogleSheets');
+            }
+        }
+
+        // =============================================
+        // QR CODE GENERATION
+        // =============================================
+        function generateQRCode(ticketCode) {
+            try {
+                const canvas = document.getElementById('qrCodeCanvas');
+                const qrCodeContainer = document.getElementById('qrCodeContainer');
+                
+                QRCode.toCanvas(canvas, ticketCode, {
+                    width: 180,
+                    margin: 2,
+                    color: {
+                        dark: '#d4af37',
+                        light: '#000000'
+                    }
+                }, function(error) {
+                    if (error) {
+                        console.error('QR Code error:', error);
+                        qrCodeContainer.classList.add('hidden');
+                    } else {
+                        qrCodeContainer.classList.remove('hidden');
+                    }
+                });
+            } catch (error) {
+                console.error('QR Code generation failed:', error);
+                document.getElementById('qrCodeContainer').classList.add('hidden');
             }
         }
 
@@ -2688,6 +2952,9 @@
             document.getElementById('ticketIdDisplay').textContent = `ID: ${ticketData.ticketId}`;
             document.getElementById('ticketQuantity').textContent = ticketData.tiket;
             document.getElementById('paymentMethodDisplay').textContent = getPaymentMethodDisplay(ticketData.metode);
+            
+            // Generate QR Code
+            generateQRCode(ticketData.ticketCode);
             
             // Set payment status
             const paymentStatus = document.getElementById('paymentStatusDisplay');
@@ -2781,6 +3048,11 @@
                 return false;
             }
             
+            if (tiketQty > config.MAX_TICKETS) {
+                showNotification(`Maksimal ${config.MAX_TICKETS} tiket!`, 'error');
+                return false;
+            }
+            
             // File validation for Dana/BCA
             if (requiresProofUpload && !selectedFile) {
                 showNotification('Harap upload bukti pembayaran!', 'error');
@@ -2863,8 +3135,9 @@
             // Ticket quantity change
             const tiketInput = document.getElementById('tiket');
             tiketInput.addEventListener('input', function() {
-                const qty = parseInt(this.value) || 1;
-                const subtotal = qty * HARGA_TIKET;
+                const qty = Math.min(Math.max(parseInt(this.value) || 1, 1), config.MAX_TICKETS);
+                this.value = qty;
+                const subtotal = qty * config.HARGA_TIKET;
                 
                 document.getElementById('subtotal').textContent = formatRupiah(subtotal);
                 document.getElementById('totalTiket').textContent = qty;
@@ -2964,7 +3237,27 @@
             
             // Ticket actions
             document.getElementById('downloadTicket').addEventListener('click', function() {
-                showNotification('Fitur download akan datang. Silakan screenshot manual.', 'info');
+                try {
+                    const ticketElement = document.querySelector('.ticket-container');
+                    const opt = {
+                        margin: 10,
+                        filename: `ticket-${document.getElementById('ticketCodeDisplay').textContent}.pdf`,
+                        image: { type: 'jpeg', quality: 0.98 },
+                        html2canvas: { scale: 2 },
+                        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                    };
+                    
+                    // Check if html2pdf is available
+                    if (typeof html2pdf !== 'undefined') {
+                        html2pdf().from(ticketElement).set(opt).save();
+                        showNotification('Tiket sedang didownload...', 'success');
+                    } else {
+                        showNotification('Silakan screenshot manual untuk saat ini.', 'info');
+                    }
+                } catch (error) {
+                    console.error('Download error:', error);
+                    showNotification('Silakan screenshot halaman ini.', 'info');
+                }
             });
             
             document.getElementById('shareTicket').addEventListener('click', function() {
@@ -3055,12 +3348,12 @@
                 
                 navigator.clipboard.writeText(caption).then(() => {
                     showNotification('Caption disalin! Buka Instagram dan paste.', 'success');
-                    setTimeout(() => window.open(INSTAGRAM_URL, '_blank'), 1500);
+                    setTimeout(() => window.open(config.INSTAGRAM_URL, '_blank'), 1500);
                 });
             });
             
             document.getElementById('shareWhatsApp').addEventListener('click', function() {
-                const message = `*🎫 KILAS BALIK MASA - TIKET TERBIT! 🎫*\n\nSaya baru saja mendaftar acara *Kilas Balik Masa* SMA Hangtuah 5 Sidoarjo!\n\n*Detail Tiket:*\n• Kode: ${document.getElementById('ticketCodeDisplay').textContent}\n• Tanggal: 24 Januari 2026\n• Waktu: 07.30 WIB\n• Lokasi: SMA Hangtuah 5 Sidoarjo\n\nFollow Instagram acara: ${INSTAGRAM_HANDLE}`;
+                const message = `*🎫 KILAS BALIK MASA - TIKET TERBIT! 🎫*\n\nSaya baru saja mendaftar acara *Kilas Balik Masa* SMA Hangtuah 5 Sidoarjo!\n\n*Detail Tiket:*\n• Kode: ${document.getElementById('ticketCodeDisplay').textContent}\n• Tanggal: 24 Januari 2026\n• Waktu: 07.30 WIB\n• Lokasi: SMA Hangtuah 5 Sidoarjo\n\nFollow Instagram acara: ${config.INSTAGRAM_HANDLE}`;
                 
                 window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, '_blank');
             });
@@ -3074,7 +3367,7 @@
             
             try {
                 // Test CORS preflight
-                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                const response = await fetch(config.GOOGLE_SCRIPT_URL, {
                     method: 'OPTIONS',
                     headers: { 'Content-Type': 'application/json' }
                 });
@@ -3094,12 +3387,27 @@
         }
 
         // =============================================
+        // SERVICE WORKER REGISTRATION
+        // =============================================
+        function registerServiceWorker() {
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/sw.js').then(registration => {
+                        console.log('ServiceWorker registered:', registration);
+                    }).catch(error => {
+                        console.log('ServiceWorker registration failed:', error);
+                    });
+                });
+            }
+        }
+
+        // =============================================
         // INITIALIZATION
         // =============================================
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize form
             const tiketInput = document.getElementById('tiket');
-            const subtotal = parseInt(tiketInput.value) * HARGA_TIKET;
+            const subtotal = parseInt(tiketInput.value) * config.HARGA_TIKET;
             document.getElementById('subtotal').textContent = formatRupiah(subtotal);
             document.getElementById('totalHarga').textContent = formatRupiah(subtotal);
             document.getElementById('danaAmount').textContent = formatRupiah(subtotal);
@@ -3111,6 +3419,10 @@
             
             // Set timestamp
             document.getElementById('hiddenTimestamp').value = new Date().toISOString();
+            
+            // Initialize countdown timer
+            updateCountdown();
+            countdownInterval = setInterval(updateCountdown, 1000);
             
             // Initialize event listeners
             initEventListeners();
@@ -3137,8 +3449,8 @@
                 console.log(`📁 Backup data ditemukan: ${backupCount} tiket`);
             }
             
-            // Auto-test connection on load (optional)
-            // setTimeout(testConnection, 1000);
+            // Register Service Worker for PWA
+            registerServiceWorker();
             
             console.log('✅ Sistem Kilas Balik Masa siap digunakan!');
         });
@@ -3158,3 +3470,4 @@
     </script>
 </body>
 </html>
+
